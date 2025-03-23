@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SAEBUT2_S4</string>
+    <string name="lukassos">LukAssos</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
