@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <ImageView
+            android:layout_width="116dp"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            android:src="@drawable/logo_solidall" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/name_app"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:paddingTop="20dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nom Asso"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        />
+
+    <!-- Page de récapitulatif -->
+    <LinearLayout
+        android:id="@+id/recapLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_input"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:padding="30dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don Unique"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Récapitulatif :"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom :"
+                android:textStyle="bold"
+                android:paddingEnd="10dp"/>
+            <TextView
+                android:id="@+id/textViewLastName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_input_background"
+                android:hint="Nom Saisie"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prénom :"
+                android:textStyle="bold"
+                android:paddingEnd="10dp"/>
+            <TextView
+                android:id="@+id/textViewFirstName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_input_background"
+                android:hint="Prénom Saisie"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail :"
+                android:textStyle="bold"
+                android:paddingEnd="10dp"/>
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_input_background"
+                android:hint="E-mail Saisie"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Association\nchoisie :"
+                android:textStyle="bold"
+                android:paddingEnd="10dp"/>
+            <TextView
+                android:id="@+id/textViewAssociation"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_input_background"
+                android:hint="Association Saisie"
+                android:paddingStart="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dp"
+                android:text="Montant :"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textViewAmount"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_input_background"
+                android:paddingStart="10dp"
+                android:hint="Montant Saisie"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Boutons de navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Retour"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#808080"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/buttonNext"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Suivant"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#A0A060"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</LinearLayout>
