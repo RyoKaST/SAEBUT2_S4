@@ -10,8 +10,6 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 
 import com.example.saebut2_s4.R;
-import com.example.saebut2_s4.ui.AcceuilActivity;
-import com.example.saebut2_s4.ui.ConnectionActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -47,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
                 // Une fois la barre remplie, on passe à MainActivity
-                Intent intent = new Intent(SplashActivity.this, ConnectionActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ConnexionActivity.class);
                 startActivity(intent);
                 finish();
             }
