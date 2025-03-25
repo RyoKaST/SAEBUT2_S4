@@ -1,4 +1,4 @@
-package com.example.saebut2_s4;
+package com.example.saebut2_s4.ui;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.saebut2_s4.R;
 
 public class SplashActivity extends AppCompatActivity {
 
