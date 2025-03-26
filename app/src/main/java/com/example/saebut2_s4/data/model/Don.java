@@ -10,11 +10,11 @@ import static androidx.room.ForeignKey.CASCADE;
 @Entity(tableName = "dons",
         foreignKeys = {
                 @ForeignKey(entity = Utilisateur.class,
-                        parentColumns = "idUtilisateur",
+                        parentColumns = "id_utilisateur",
                         childColumns = "id_utilisateur",
                         onDelete = CASCADE),
                 @ForeignKey(entity = Association.class,
-                        parentColumns = "idAssociation",
+                        parentColumns = "id_association",
                         childColumns = "id_association",
                         onDelete = CASCADE)
         })

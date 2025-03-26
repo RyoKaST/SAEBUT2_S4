@@ -1,6 +1,7 @@
 package com.example.saebut2_s4.data.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import com.example.saebut2_s4.data.model.Don;
 
 import java.util.List;
 
+@Dao
 public interface DonDao {
     @Insert
     void inserer(Don don);
