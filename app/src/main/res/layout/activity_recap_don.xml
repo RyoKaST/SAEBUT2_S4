@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FFFFFF"
+    android:background="@color/Vert3_palette"
     tools:context=".ui.RecapDonActivity">
 
     <LinearLayout
@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/name_app"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:paddingTop="20dp"
@@ -36,10 +37,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nom Asso"
+        android:text="@string/nom_association"
+        android:textColor="@color/white"
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         />
 
     <!-- Page de récapitulatif -->
@@ -52,6 +54,7 @@
         android:background="@drawable/rounded_input"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/white"
         android:padding="30dp"
         >
 
@@ -186,10 +189,10 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Retour"
+            android:text="@string/retour"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#808080"
-            android:textColor="#FFFFFF"/>
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonNext"
@@ -198,7 +201,7 @@
             android:layout_weight="1"
             android:text="Suivant"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#A0A060"
-            android:textColor="#FFFFFF"/>
+            android:backgroundTint="@color/Orange_palette"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

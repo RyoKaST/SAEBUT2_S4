@@ -5,17 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/white"
+    android:background="@color/Vert3_palette"
     tools:context=".ui.SplashActivity">
 
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SolidAll"
+        android:text="@string/solidall"
         android:textSize="50sp"
 
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_marginTop="16dp"
         android:gravity="center"/>
 
@@ -25,7 +26,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/logo_solidall"
-        android:contentDescription="Logo de SolidAll"/>
+        android:contentDescription="@string/logo_de_solidall"/>
 
     <!-- ProgressBar circulaire qui tourne -->
     <ProgressBar
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:indeterminateTint="@color/white"
         android:indeterminate="true" />
 
     <!-- ProgressBar horizontale qui se remplit -->
@@ -44,5 +46,6 @@
         android:layout_marginTop="20dp"
         android:max="100"
         android:progress="0"
+        android:indeterminateTint="@color/Orange_palette"
         android:progressDrawable="@drawable/progress_bar_style"/>
 </LinearLayout>
