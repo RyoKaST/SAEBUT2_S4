@@ -3,9 +3,10 @@ package com.example.saebut2_s4.data.model;
 import androidx.annotation.NonUiContext;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "utilisateurs")
+@Entity(tableName = "utilisateurs", indices = {@Index(value = "email_utilisateur", unique = true)})
 public class Utilisateur {
 
     @PrimaryKey(autoGenerate = true)
@@ -22,7 +23,7 @@ public class Utilisateur {
     private String emailUtilisateur;
 
     @ColumnInfo(name="telephone_utilisateur")
-    private int telephoneUtilisateur;
+    private String telephoneUtilisateur;
 
     @ColumnInfo(name="motdepasse_utilisateur")
     private String motDePasseUtilisateur;
@@ -65,11 +66,11 @@ public class Utilisateur {
         this.emailUtilisateur = emailUtilisateur;
     }
 
-    public int getTelephoneUtilisateur() {
+    public String getTelephoneUtilisateur() {
         return telephoneUtilisateur;
     }
 
-    public void setTelephoneUtilisateur(int telephoneUtilisateur) {
+    public void setTelephoneUtilisateur(String telephoneUtilisateur) {
         this.telephoneUtilisateur = telephoneUtilisateur;
     }
 

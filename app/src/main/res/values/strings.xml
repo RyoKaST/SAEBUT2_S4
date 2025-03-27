@@ -7,4 +7,22 @@
     <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
     <string name="name_app">SolidAll</string>
     <string name="connexion">Connexion</string>
+    <string name="solidall">SolidAll</string>
+    <string name="logo_de_solidall">Logo de SolidAll</string>
+    <string name="nom_association">Nom Association</string>
+    <string name="retour">Retour</string>
+    <string name="passer">Passer</string>
+    <string name="inscription">Inscription</string>
+    <string name="vous_avez_deja_un_compte">Vous avez deja un compte ?</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="telephone">Telephone</string>
+    <string name="faire_un_don">Faire un don</string>
+    <string name="indiquez_votre_nom_de_famille">Indiquez votre nom de famille</string>
+    <string name="indiquez_votre_pr_nom">Indiquez votre prénom</string>
+    <string name="indiquez_votre_e_mail">Indiquez votre e-mail</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="suivant">Suivant</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="vous_n_avez_pas_de_compte">Vous n’avez pas de compte ?</string>
 </resources>

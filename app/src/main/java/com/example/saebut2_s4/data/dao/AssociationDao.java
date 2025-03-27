@@ -12,8 +12,6 @@ import java.util.List;
 
 @Dao
 public interface AssociationDao {
-    @Insert
-    long insertAssociation();
 
     @Insert
     void inserer(Association association);
