@@ -25,4 +25,8 @@
     <string name="suivant">Suivant</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="vous_n_avez_pas_de_compte">Vous n’avez pas de compte ?</string>
+    <string name="accueil">Accueil</string>
+    <string name="recherche">Recherche</string>
+    <string name="favoris">Favoris</string>
+    <string name="compte">Compte</string>
 </resources>

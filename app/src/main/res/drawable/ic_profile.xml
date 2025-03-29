@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48"> <!-- Double the original (24 → 48) -->
+<path
+    android:fillColor="@color/white"
+    android:pathData="M24,24a8,8 0 1,0 -8,-8 8,8 0 0,0 8,8zm0,4c-8.84,0 -16,3.58 -16,8v4h32v-4c0,-4.42 -7.16,-8 -16,-8z"/>
+    </vector>
