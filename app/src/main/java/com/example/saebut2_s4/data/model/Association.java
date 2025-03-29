@@ -17,8 +17,8 @@ public class Association {
     @ColumnInfo(name="description_association")
     private String descriptionAssociation;
 
-    @ColumnInfo(name="contact_association")
-    private String contactEmailAssociation;
+    @ColumnInfo(name="siteweb_association")
+    private String siteweb;
 
     // Constructeur public sans argument pour Room
     public Association() {
@@ -50,11 +50,11 @@ public class Association {
         this.descriptionAssociation = descriptionAssociation;
     }
 
-    public String getContactEmailAssociation() {
-        return contactEmailAssociation;
+    public String getSiteweb() {
+        return siteweb;
     }
 
-    public void setContactEmailAssociation(String contactEmailAssociation) {
-        this.contactEmailAssociation = contactEmailAssociation;
+    public void setSiteweb(String siteweb) {
+        this.siteweb = siteweb;
     }
 }
