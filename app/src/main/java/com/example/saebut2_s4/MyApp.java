@@ -1,9 +1,15 @@
 package com.example.saebut2_s4;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.example.saebut2_s4.data.model.Association;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +25,7 @@ public class MyApp extends Application {
 
         // Initialize the associations list
         associations = new ArrayList<>();
-        // Add mock data with logo URLs
-        associations.add(new Association("Association 1", "Description 1 la desc est tres long de facon expres premedite parce que je suis homosexuel", "https://example.com/logo1.png"));
-        associations.add(new Association("Association 2", "Description 2", "https://example.com/logo2.png"));
+        loadAssociationsFromJson();
     }
 
     public static MyApp getInstance() {
@@ -30,5 +34,36 @@ public class MyApp extends Application {
 
     public List<Association> getAssociations() {
         return associations;
+    }
+
+    private void loadAssociationsFromJson() {
+        try {
+            // Load the JSON file from assets
+            InputStream inputStream = getAssets().open("asso.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+
+            // Convert the JSON file content to a string
+            String json = new String(buffer, StandardCharsets.UTF_8);
+
+            // Parse the JSON
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.getJSONArray("associations");
+
+            // Populate the associations list
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject associationJson = jsonArray.getJSONObject(i);
+                String name = associationJson.getString("name");
+                String desc = associationJson.getString("desc");
+                String logo = associationJson.getString("logo");
+                String lien = associationJson.optString("lien", ""); // Get the website link
+
+                associations.add(new Association(name, desc, logo, lien));
+            }
+        } catch (Exception e) {
+            Log.e("MyApp", "Error loading associations from JSON", e);
+        }
     }
 }

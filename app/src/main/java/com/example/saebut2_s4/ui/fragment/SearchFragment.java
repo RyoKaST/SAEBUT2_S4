@@ -40,16 +40,17 @@ public class SearchFragment extends Fragment {
         associations = MyApp.getInstance().getAssociations();
         filteredAssociations = new ArrayList<>();
 
-        // Truncate descriptions to 30 characters for display
+        // Truncate descriptions to 60 characters for display
         for (Association association : associations) {
             String truncatedDescription = association.getDescriptionAssociation();
-            if (truncatedDescription.length() > 30) {
-                truncatedDescription = truncatedDescription.substring(0, 30) + "...";
+            if (truncatedDescription.length() > 60) {
+                truncatedDescription = truncatedDescription.substring(0, 60) + "...";
             }
             filteredAssociations.add(new Association(
                 association.getNomAssociation(),
                 truncatedDescription,
-                association.getLogoUrl()
+                association.getLogoUrl(),
+                association.getLien() // Include the website link
             ));
         }
 
@@ -58,12 +59,12 @@ public class SearchFragment extends Fragment {
 
         // Add item click listener
         listView.setOnItemClickListener((parent, view1, position, id) -> {
-            // Use the original description from the associations list
+            // Use the original description and link from the associations list
             Association selectedAssociation = associations.get(position);
             Intent intent = new Intent(requireContext(), AssociationDetailsActivity.class);
             intent.putExtra("association_name", selectedAssociation.getNomAssociation());
             intent.putExtra("association_description", selectedAssociation.getDescriptionAssociation());
-            intent.putExtra("association_siteweb", selectedAssociation.getSiteweb());
+            intent.putExtra("association_siteweb", selectedAssociation.getLien()); // Pass the website link
             intent.putExtra("association_logo", selectedAssociation.getLogoUrl());
             startActivity(intent);
         });
@@ -92,12 +93,15 @@ public class SearchFragment extends Fragment {
         filteredAssociations.clear();
         for (Association association : associations) {
             if (association.getNomAssociation().toLowerCase().contains(query.toLowerCase())) {
+                String truncatedDescription = association.getDescriptionAssociation();
+                if (truncatedDescription.length() > 60) {
+                    truncatedDescription = truncatedDescription.substring(0, 60) + "...";
+                }
                 filteredAssociations.add(new Association(
                     association.getNomAssociation(),
-                    association.getDescriptionAssociation().length() > 30
-                        ? association.getDescriptionAssociation().substring(0, 30) + "..."
-                        : association.getDescriptionAssociation(),
-                    association.getLogoUrl()
+                    truncatedDescription,
+                    association.getLogoUrl(),
+                    association.getLien() // Include the website link
                 ));
             }
         }

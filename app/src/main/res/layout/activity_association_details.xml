@@ -45,17 +45,15 @@
             android:textColor="@color/white"
             android:paddingBottom="8dp" />
 
-        <TextView
-            android:id="@+id/association_siteweb"
+        <Button
+            android:id="@+id/association_siteweb_button"
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"
+            android:text="@string/visit_website"
+            android:backgroundTint="@color/Vert3_palette"
             android:textColor="@color/blue_primary"
-            android:paddingBottom="16dp" />
-
-
+            android:layout_marginBottom="20dp"
+            android:padding="8dp" />
     </LinearLayout>
 
     <Button

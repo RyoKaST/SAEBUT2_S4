@@ -21,17 +21,21 @@ public class Association {
     private String siteweb;
 
     @ColumnInfo(name = "logo_url")
-    private String logoUrl; // New field for the logo URL
+    private String logoUrl;
+
+    @ColumnInfo(name = "lien")
+    private String lien; // New field for the website link
 
     // Default constructor for Room
     public Association() {
     }
 
     // Constructor
-    public Association(String nomAssociation, String descriptionAssociation, String logoUrl) {
+    public Association(String nomAssociation, String descriptionAssociation, String logoUrl, String lien) {
         this.nomAssociation = nomAssociation;
         this.descriptionAssociation = descriptionAssociation;
         this.logoUrl = logoUrl;
+        this.lien = lien;
     }
 
     // Getters and Setters
@@ -73,5 +77,13 @@ public class Association {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
+    }
+
+    public String getLien() {
+        return lien;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
     }
 }
