@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/Vert3_palette"
@@ -50,18 +51,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rounded_input"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/white"
-        android:padding="30dp"
+        android:backgroundTint="@color/Vert3_palette"
+        android:padding="20dp"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don Unique"
+            android:text="Récapitulatif Don"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -88,7 +89,7 @@
                 android:paddingEnd="10dp"/>
             <TextView
                 android:id="@+id/textViewLastName"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_input_background"
                 android:hint="Nom Saisie"
@@ -108,7 +109,7 @@
                 android:paddingEnd="10dp"/>
             <TextView
                 android:id="@+id/textViewFirstName"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_input_background"
                 android:hint="Prénom Saisie"
@@ -128,7 +129,7 @@
                 android:paddingEnd="10dp"/>
             <TextView
                 android:id="@+id/textViewEmail"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_input_background"
                 android:hint="E-mail Saisie"
@@ -148,7 +149,7 @@
                 android:paddingEnd="10dp"/>
             <TextView
                 android:id="@+id/textViewAssociation"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_input_background"
                 android:hint="Association Saisie"
@@ -169,7 +170,7 @@
                 android:textStyle="bold"/>
             <TextView
                 android:id="@+id/textViewAmount"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_input_background"
                 android:paddingStart="10dp"
@@ -182,7 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginBottom="30dp">
 
         <Button
             android:id="@+id/buttonBack"
@@ -204,4 +205,22 @@
             android:backgroundTint="@color/Orange_palette"
             android:textColor="@color/white"/>
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/rounded_bottom_nav_background"
+        android:elevation="8dp"
+        android:fitsSystemWindows="false"
+        app:itemIconSize="36dp"
+        app:itemIconTint="@drawable/bottom_nav_selector"
+        app:itemTextColor="@drawable/bottom_nav_selector"
+        app:itemPaddingTop="20dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

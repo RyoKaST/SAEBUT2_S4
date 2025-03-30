@@ -29,4 +29,14 @@
     <string name="recherche">Recherche</string>
     <string name="favoris">Favoris</string>
     <string name="compte">Compte</string>
+    <string name="transaction_enregistrer">Votre transaction a bien été enregistrée !</string>
+    <string name="Merci">SolidAll vous remercie !</string>
+    <string name="facture_mail">La facture vous sera envoyée par mail !</string>
+    <string name="redirection">Patientez, vous allez bientôt être redirigé !</string>
+    <string name="typeDon">Souhaitez-vous réaliser un don unique ou un don récurrent ?</string>
+    <string name="montant">Saisir le montant :</string>
+    <string name="montant_input">montant</string>
+    <string name="don_rec">Don récurrent (nécessite un compte utilisateur)</string>
+    <string name="don_unique">Don unique</string>
+    <string name="je_valide_mon_paiement">Je valide mon paiement</string>
 </resources>
