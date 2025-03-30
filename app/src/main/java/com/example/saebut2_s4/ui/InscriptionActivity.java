@@ -25,7 +25,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
     private static final String TAG = "InscriptionActivity";
     String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
+    String telephoneRegex = "^\\d{10,15}$";
     private EditText nom, prenom, email, telephone, motdepasse;
     private Button inscription, connexionButton;
     private TextView passText;
@@ -79,6 +79,9 @@ public class InscriptionActivity extends AppCompatActivity {
             return;
         } else if (!emailText.matches(emailRegex)) {
             Toast.makeText(this, "Adresse e-mail invalide", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (!telText.matches(telephoneRegex)) {
+            Toast.makeText(this, "Telephone invalide", Toast.LENGTH_SHORT).show();
             return;
         }
 
