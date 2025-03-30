@@ -45,6 +45,9 @@
         <activity
             android:name=".ui.UtilisateurListActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.MoyenPaiementActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
