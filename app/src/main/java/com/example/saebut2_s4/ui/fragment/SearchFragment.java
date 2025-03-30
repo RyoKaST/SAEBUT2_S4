@@ -1,5 +1,6 @@
 package com.example.saebut2_s4.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import com.example.saebut2_s4.MyApp;
 import com.example.saebut2_s4.R;
 import com.example.saebut2_s4.data.model.Association;
 import com.example.saebut2_s4.ui.AssociationAdapter;
+import com.example.saebut2_s4.ui.AssociationDetailsActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +38,35 @@ public class SearchFragment extends Fragment {
         EditText searchBar = view.findViewById(R.id.search_bar);
 
         associations = MyApp.getInstance().getAssociations();
-        filteredAssociations = new ArrayList<>(associations);
+        filteredAssociations = new ArrayList<>();
+
+        // Truncate descriptions to 30 characters for display
+        for (Association association : associations) {
+            String truncatedDescription = association.getDescriptionAssociation();
+            if (truncatedDescription.length() > 30) {
+                truncatedDescription = truncatedDescription.substring(0, 30) + "...";
+            }
+            filteredAssociations.add(new Association(
+                association.getNomAssociation(),
+                truncatedDescription,
+                association.getLogoUrl()
+            ));
+        }
 
         adapter = new AssociationAdapter(requireContext(), filteredAssociations);
         listView.setAdapter(adapter);
+
+        // Add item click listener
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            // Use the original description from the associations list
+            Association selectedAssociation = associations.get(position);
+            Intent intent = new Intent(requireContext(), AssociationDetailsActivity.class);
+            intent.putExtra("association_name", selectedAssociation.getNomAssociation());
+            intent.putExtra("association_description", selectedAssociation.getDescriptionAssociation());
+            intent.putExtra("association_siteweb", selectedAssociation.getSiteweb());
+            intent.putExtra("association_logo", selectedAssociation.getLogoUrl());
+            startActivity(intent);
+        });
 
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -65,7 +92,13 @@ public class SearchFragment extends Fragment {
         filteredAssociations.clear();
         for (Association association : associations) {
             if (association.getNomAssociation().toLowerCase().contains(query.toLowerCase())) {
-                filteredAssociations.add(association);
+                filteredAssociations.add(new Association(
+                    association.getNomAssociation(),
+                    association.getDescriptionAssociation().length() > 30
+                        ? association.getDescriptionAssociation().substring(0, 30) + "..."
+                        : association.getDescriptionAssociation(),
+                    association.getLogoUrl()
+                ));
             }
         }
         adapter.notifyDataSetChanged();

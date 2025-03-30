@@ -49,6 +49,7 @@
         <activity
             android:name=".ui.MoyenPaiementActivity"
             android:exported="true" />
+        <activity android:name=".ui.AssociationDetailsActivity" />
     </application>
 
 </manifest>
