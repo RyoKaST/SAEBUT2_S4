@@ -12,10 +12,10 @@
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_hint"
+            android:hint="Chercher une association..."
             android:padding="8dp"
-            android:background="@color/white"
-            android:textColor="@color/black"
+            android:background="@color/Vert1_palette"
+            android:textColor="@color/white"
             android:drawableStart="@android:drawable/ic_menu_search"
             android:drawablePadding="8dp"
             android:inputType="text" />
@@ -24,7 +24,10 @@
             android:id="@+id/list_associations_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@color/gray"
-            android:dividerHeight="1dp" />
+            android:layout_margin="10dp"
+            android:divider="@color/Vert3_palette"
+            android:background="@color/Vert3_palette"
+            android:dividerHeight="10dp"
+            />
     </LinearLayout>
 </FrameLayout>
