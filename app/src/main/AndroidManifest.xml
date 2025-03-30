@@ -28,6 +28,9 @@
             android:name=".ui.RecapDonActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.FirstPageDonActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.EffectuerDonActivity"
             android:exported="true" />
         <activity

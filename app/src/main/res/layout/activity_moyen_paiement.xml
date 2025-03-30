@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="120dp"
         android:layout_marginStart="0dp"
         >
 
@@ -27,7 +27,7 @@
         android:text="Don"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:paddingBottom="16dp" />
 
     <!-- Sous-titre -->
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Saisissez vos coordonnées bancaires :"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:paddingBottom="16dp" />
 
     <!-- Conteneur arrondi -->
@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical">
 
         <!-- Numéro de carte -->
@@ -54,7 +55,7 @@
             android:textSize="16sp"
             android:padding="16dp"
             android:paddingBottom="15dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
 
         <EditText
             android:layout_width="match_parent"
@@ -71,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:text="Date d'expiration :"
                     android:textSize="16sp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:paddingBottom="15dp"
                     android:paddingTop="15dp"
                     />
@@ -98,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="CVC :"
                     android:textSize="14sp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"/>
 
@@ -125,34 +126,19 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:backgroundTint="@color/Orange_palette"
+            android:layout_marginBottom="10sp"
             android:text="@string/je_valide_mon_paiement"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
         <Button
             android:id="@+id/buttonBack"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/Vert1_palette"
             android:text="@string/retour"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@drawable/rounded_bottom_nav_background"
-        android:elevation="8dp"
-        android:fitsSystemWindows="false"
-        app:itemIconSize="36dp"
-        app:itemIconTint="@drawable/bottom_nav_selector"
-        app:itemTextColor="@drawable/bottom_nav_selector"
-        app:itemPaddingTop="20dp"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        android:layout_marginTop="10dp"/>
+
 
 </LinearLayout>
