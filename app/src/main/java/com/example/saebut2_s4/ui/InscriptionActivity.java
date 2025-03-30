@@ -98,7 +98,8 @@ public class InscriptionActivity extends AppCompatActivity {
                 utilisateurDao.inserer(u);
                 runOnUiThread(() ->
                         Toast.makeText(this, "Inscription réussie !", Toast.LENGTH_SHORT).show());
-            } catch (android.database.sqlite.SQLiteConstraintException e) {
+            } catch (Exception e) {
+                e.printStackTrace();
                 runOnUiThread(() ->
                         Toast.makeText(this, "Cet email est déjà utilisé !", Toast.LENGTH_SHORT).show());
                 return;
