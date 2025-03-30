@@ -14,12 +14,6 @@
         android:enabled="true"/>
 
     <item
-        android:id="@+id/nav_center"
-        android:icon="@drawable/ic_center"
-        android:title=""
-        android:enabled="true" />
-
-    <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favoris"
