@@ -95,8 +95,8 @@ public class AccueilActivity extends AppCompatActivity {
     }
 
     private void setupNavigation() {
-        bottomNav.setOnNavigationItemSelectedListener(this::handleNavigationItemSelected);
-
+        bottomNav = findViewById(R.id.bottom_navigation); // Assuming you have a BottomNavigationView with this ID in your layout
+        bottomNav.setOnItemSelectedListener(this::handleNavigationItemSelected);
         bottomNav.setSelectedItemId(R.id.nav_home);
     }
 
@@ -150,15 +150,5 @@ public class AccueilActivity extends AppCompatActivity {
         // Optional: Add to back stack
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        if (fragmentManager.getBackStackEntryCount() > 0) {
-            fragmentManager.popBackStack();
-        } else {
-            super.onBackPressed();
-        }
     }
 }
