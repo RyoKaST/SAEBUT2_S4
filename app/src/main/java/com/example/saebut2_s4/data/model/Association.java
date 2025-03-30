@@ -24,6 +24,12 @@ public class Association {
     public Association() {
     }
 
+    // Constructor
+    public Association(String nomAssociation, String descriptionAssociation) {
+        this.nomAssociation = nomAssociation;
+        this.descriptionAssociation = descriptionAssociation;
+    }
+
     // Getters et Setters
 
     public long getIdAssociation() {
