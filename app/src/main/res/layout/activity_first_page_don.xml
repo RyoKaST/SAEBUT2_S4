@@ -101,6 +101,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
+                    android:id="@+id/montant_input"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:hint="@string/montant_input"

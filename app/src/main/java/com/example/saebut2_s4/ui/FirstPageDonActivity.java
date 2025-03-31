@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,10 +64,26 @@ public class FirstPageDonActivity extends AppCompatActivity {
         });
 
         Button buttonNext = findViewById(R.id.buttonNext);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonNext.setOnClickListener(v -> {
+            EditText montantInput = findViewById(R.id.montant_input);
+
+            String montantText = montantInput.getText().toString().trim();
+            if (montantText.isEmpty()) {
+                Toast.makeText(this, "Veuillez saisir un montant", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double montant = Double.parseDouble(montantText);
+
+            if (isLoggedIn) {
+                // Redirect logged-in users to MoyenPaiementActivity
+                Intent intent = new Intent(FirstPageDonActivity.this, MoyenPaiementActivity.class);
+                intent.putExtra("montant", montant);
+                startActivity(intent);
+            } else {
+                // Redirect non-logged-in users to EffectuerDonActivity
                 Intent intent = new Intent(FirstPageDonActivity.this, EffectuerDonActivity.class);
+                intent.putExtra("montant", montant);
                 startActivity(intent);
             }
         });
