@@ -52,6 +52,9 @@ public class FavoritesFragment extends Fragment {
             // Load tags from asso.json
             Set<String> tags = loadTagsFromJson();
 
+            // Create a list to hold all tag views
+            List<TextView> tagViews = new ArrayList<>();
+
             // Dynamically create tiles for each tag
             for (String tag : tags) {
                 TextView tile = new TextView(requireContext());
@@ -73,13 +76,40 @@ public class FavoritesFragment extends Fragment {
                     startActivity(intent);
                 });
 
-                // Add tile to the grid layout
+                // Add tile to the grid layout and the list
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                 params.setMargins(10, 10, 10, 10);
                 tile.setLayoutParams(params);
 
                 gridLayout.addView(tile);
+                tagViews.add(tile);
             }
+
+            // Add text watcher to filter tags
+            searchBar.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // No action needed
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String query = s.toString().toLowerCase();
+                    for (TextView tagView : tagViews) {
+                        if (tagView.getText().toString().toLowerCase().contains(query)) {
+                            tagView.setVisibility(View.VISIBLE);
+                        } else {
+                            tagView.setVisibility(View.GONE);
+                        }
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // No action needed
+                }
+            });
+
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(requireContext(), "Failed to load tags", Toast.LENGTH_SHORT).show();
@@ -90,7 +120,7 @@ public class FavoritesFragment extends Fragment {
 
     private Set<String> loadTagsFromJson() throws Exception {
         InputStream inputStream = requireContext().getAssets().open("asso.json");
-        byte[] buffer = new byte[inputStream.available()];
+        byte[] buffer = new byte[inputStream.available()]; // Removed the extra closing parenthesis
         inputStream.read(buffer);
         inputStream.close();
 
