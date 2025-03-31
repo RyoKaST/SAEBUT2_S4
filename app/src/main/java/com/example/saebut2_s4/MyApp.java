@@ -59,7 +59,6 @@ public class MyApp extends Application {
                 AppDatabase appDatabase = AppDatabase.getInstance(this);
                 AssociationDao associationDao = appDatabase.associationDao();
 
-                long currentId = 1; // Start ID from 1
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject associationJson = jsonArray.getJSONObject(i);
                     String name = associationJson.getString("name");
@@ -74,9 +73,8 @@ public class MyApp extends Application {
                         tags.add(tagsArray.getString(j));
                     }
 
-                    // Create Association object and assign a unique ID
+                    // Create Association object without manually setting the ID
                     Association association = new Association(name, desc, logo, lien, tags);
-                    association.setIdAssociation(currentId++); // Increment ID for each association
                     associations.add(association);
 
                     // Insert the association into the database
