@@ -2,10 +2,13 @@ package com.example.saebut2_s4.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,6 +46,7 @@ public class FavoritesFragment extends Fragment {
 
         GridLayout gridLayout = view.findViewById(R.id.grid_layout_tags);
         LinearLayout associationsLayout = view.findViewById(R.id.associations_layout);
+        EditText searchBar = view.findViewById(R.id.search_bar);
 
         try {
             // Load tags from asso.json

@@ -16,6 +16,18 @@
         android:gravity="center"
         android:layout_marginBottom="16dp" />
 
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/chercher_un_tag"
+        android:padding="8dp"
+        android:background="@color/Vert1_palette"
+        android:textColorHint="@color/white"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        android:inputType="text" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
