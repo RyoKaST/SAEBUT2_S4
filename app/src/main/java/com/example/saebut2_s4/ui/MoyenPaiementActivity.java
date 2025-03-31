@@ -172,6 +172,13 @@ public class MoyenPaiementActivity extends AppCompatActivity {
             // Retrieve the logged-in user ID and selected association ID
             long userId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("user_id", -1);
             long associationId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("selected_association_id", -1);
+
+            if (associationId == -1) {
+                Log.e("MoyenPaiementActivity", "No association selected");
+                runOnUiThread(() -> Toast.makeText(this, "Veuillez sélectionner une association.", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
             String montant = getIntent().getStringExtra("montant");
 
             // Log the retrieved association ID

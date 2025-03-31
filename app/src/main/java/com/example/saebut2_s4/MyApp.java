@@ -74,9 +74,9 @@ public class MyApp extends Application {
                         tags.add(tagsArray.getString(j));
                     }
 
-                    // Create Association object with tags and assign a unique ID
+                    // Create Association object and assign a unique ID
                     Association association = new Association(name, desc, logo, lien, tags);
-                    association.setIdAssociation(currentId++); // Assign a unique ID
+                    association.setIdAssociation(currentId++); // Increment ID for each association
                     associations.add(association);
 
                     // Insert the association into the database

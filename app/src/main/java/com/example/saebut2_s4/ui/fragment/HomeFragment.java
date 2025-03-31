@@ -12,7 +12,10 @@ import com.example.saebut2_s4.R;
 import com.example.saebut2_s4.data.dao.DonDao;
 import com.example.saebut2_s4.data.db.AppDatabase;
 import com.example.saebut2_s4.data.model.Don;
+import com.example.saebut2_s4.data.dao.AssociationDao; // Add this import
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -71,10 +74,10 @@ public class HomeFragment extends Fragment {
     private void loadUserDonations(long userId, LinearLayout donationListLayout) {
         AppDatabase appDatabase = AppDatabase.getInstance(getContext());
         DonDao donDao = appDatabase.donDao();
+        AssociationDao associationDao = appDatabase.associationDao(); // Add this line
 
         Log.d("HomeFragment", "Loading donations for user ID: " + userId);
 
-        // Observe the LiveData returned by DonDao
         donDao.recupererDonsParUtilisateur(userId).observe(getViewLifecycleOwner(), donations -> {
             donationListLayout.removeAllViews();
 
@@ -88,13 +91,19 @@ public class HomeFragment extends Fragment {
             } else {
                 Log.d("HomeFragment", "Found " + donations.size() + " donations for user ID: " + userId);
                 for (Don donation : donations) {
-                    Log.d("HomeFragment", "Donation: " + donation.getMontantDon() + "€ to association ID: " + donation.getAssociationIdDon());
-                    TextView donationView = new TextView(getContext());
-                    donationView.setText(String.format("Don de %.2f€ à l'association ID: %d le %s",
-                        donation.getMontantDon(), donation.getAssociationIdDon(), donation.getDateDon()));
-                    donationView.setTextColor(getResources().getColor(R.color.white));
-                    donationView.setTextSize(14);
-                    donationListLayout.addView(donationView);
+                    new Thread(() -> {
+                        String associationName = associationDao.getAssociationById(donation.getAssociationIdDon()).getNomAssociation();
+                        String formattedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Long.parseLong(donation.getDateDon()));
+
+                        requireActivity().runOnUiThread(() -> {
+                            TextView donationView = new TextView(getContext());
+                            donationView.setText(String.format("Don de %.2f€ à %s le %s",
+                                donation.getMontantDon(), associationName, formattedDate));
+                            donationView.setTextColor(getResources().getColor(R.color.white));
+                            donationView.setTextSize(14);
+                            donationListLayout.addView(donationView);
+                        });
+                    }).start();
                 }
             }
         });
