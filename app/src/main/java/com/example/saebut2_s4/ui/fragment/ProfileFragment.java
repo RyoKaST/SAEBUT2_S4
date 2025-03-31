@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
             // Retrieve user details from SharedPreferences
             String userName = requireContext().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE)
                     .getString("user_name", "Unknown User");
-            accountInfo.setText("User: " + userName);
+            accountInfo.setText("Utilisateur: " + userName);
 
             // Handle logout button click
             logoutButton.setOnClickListener(v -> {
