@@ -25,4 +25,6 @@ public interface UtilisateurDao {
     @Query("SELECT * FROM utilisateurs WHERE email_utilisateur = :email LIMIT 1")
     Utilisateur getUtilisateurByEmail(String email);
 
+    @Update
+    void update(Utilisateur utilisateur);
 }
