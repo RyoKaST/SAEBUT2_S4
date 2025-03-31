@@ -96,20 +96,25 @@ public class InscriptionActivity extends AppCompatActivity {
 
             try {
                 utilisateurDao.inserer(u);
-                runOnUiThread(() ->
-                        Toast.makeText(this, "Inscription réussie !", Toast.LENGTH_SHORT).show());
+
+                // Save user info in SharedPreferences
+                getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                    .putBoolean("is_logged_in", true)
+                    .putString("user_name", nomText + " " + prenomText)
+                    .putString("user_email", emailText)
+                    .apply();
+
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Inscription réussie !", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, AccueilActivity.class);
+                    startActivity(intent);
+                    finish();
+                });
             } catch (Exception e) {
                 e.printStackTrace();
                 runOnUiThread(() ->
                         Toast.makeText(this, "Cet email est déjà utilisé !", Toast.LENGTH_SHORT).show());
-                return;
             }
-
-            runOnUiThread(() -> {
-                Intent intent = new Intent(this, UtilisateurListActivity.class);
-                startActivity(intent);
-                finish();
-            });
         }).start();
     }
 

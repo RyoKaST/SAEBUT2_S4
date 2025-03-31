@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.saebut2_s4.R;
-import com.example.saebut2_s4.ui.EffectuerDonActivity;
 
 public class FirstPageDonActivity extends AppCompatActivity {
 
@@ -28,6 +28,29 @@ public class FirstPageDonActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Check login status
+        boolean isLoggedIn = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .getBoolean("is_logged_in", false);
+
+        RadioButton donRecurrent = findViewById(R.id.don_recurrent);
+        Button loginForRecurrentDonation = findViewById(R.id.login_for_recurrent_donation);
+
+        if (isLoggedIn) {
+            // Show the RadioButton for recurring donations
+            donRecurrent.setVisibility(View.VISIBLE);
+            loginForRecurrentDonation.setVisibility(View.GONE);
+        } else {
+            // Show the login button
+            donRecurrent.setVisibility(View.GONE);
+            loginForRecurrentDonation.setVisibility(View.VISIBLE);
+
+            // Set click listener for the login button
+            loginForRecurrentDonation.setOnClickListener(v -> {
+                Intent intent = new Intent(this, ConnexionActivity.class);
+                startActivity(intent);
+            });
+        }
 
         Button buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +71,4 @@ public class FirstPageDonActivity extends AppCompatActivity {
         });
 
     }
-
-
 }
