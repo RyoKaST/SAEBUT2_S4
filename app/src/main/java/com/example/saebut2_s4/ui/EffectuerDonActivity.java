@@ -67,9 +67,8 @@ public class EffectuerDonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateForm()) {
-                    // Création d'un Intent avec toutes les données récoltées
-                    // Changement de destination vers RecapDonActivity au lieu de MoyenPaiementActivity
-                    Intent intent = new Intent(EffectuerDonActivity.this, RecapDonActivity.class);
+                    // Skip RecapDonActivity and navigate directly to MoyenPaiementActivity
+                    Intent intent = new Intent(EffectuerDonActivity.this, MoyenPaiementActivity.class);
                     intent.putExtra("montant", montant);
                     intent.putExtra("nom", editTextLastName.getText().toString().trim());
                     intent.putExtra("prenom", editTextFirstName.getText().toString().trim());

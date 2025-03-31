@@ -19,12 +19,6 @@
             android:name=".ui.MoyenPaiement2Activity"
             android:exported="false" />
         <activity
-            android:name=".ui.Inscription2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.RecapDon2Activity"
-            android:exported="false" />
-        <activity
             android:name=".ui.AssociationListActivity"
             android:exported="false" />
         <activity
@@ -36,9 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.RecapDonActivity"
-            android:exported="true" />
         <activity
             android:name=".ui.FirstPageDonActivity"
             android:exported="true" />
@@ -59,9 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.MoyenPaiementActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.Connexion2Activity"
             android:exported="true" />
         <activity
             android:name=".ui.DonFinaliseActivity"

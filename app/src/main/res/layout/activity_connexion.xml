@@ -181,4 +181,14 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/Vert1_palette"
         />
+
+    <!-- Bouton Retour -->
+    <Button
+        android:id="@+id/btn_retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/Vert3_palette"
+        android:textColor="@color/white" />
 </LinearLayout>
