@@ -174,6 +174,9 @@ public class MoyenPaiementActivity extends AppCompatActivity {
             long associationId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("selected_association_id", -1);
             String montant = getIntent().getStringExtra("montant");
 
+            // Log the retrieved association ID
+            Log.d("MoyenPaiementActivity", "Retrieved association ID: " + associationId);
+
             // Log a detailed recap before saving the donation
             Log.d("MoyenPaiementActivity", "Recap before saving donation:");
             Log.d("MoyenPaiementActivity", "User ID: " + userId);

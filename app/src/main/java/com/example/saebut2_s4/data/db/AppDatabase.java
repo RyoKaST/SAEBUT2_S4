@@ -15,7 +15,7 @@ import com.example.saebut2_s4.data.model.Utilisateur;
 import com.example.saebut2_s4.data.model.Association;
 
 
-@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 24)
+@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 27)
 @TypeConverters(Converters.class) // Register the Converters class
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
