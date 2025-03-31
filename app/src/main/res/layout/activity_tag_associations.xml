@@ -7,35 +7,30 @@
     android:background="@color/Vert3_palette">
 
     <TextView
+        android:id="@+id/tag_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tags"
+        android:text="Associations for: "
         android:textSize="24sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="16dp" />
 
-    <GridLayout
-        android:id="@+id/grid_layout_tags"
+    <ListView
+        android:id="@+id/associations_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:padding="8dp" />
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp" />
 
-    <LinearLayout
-        android:id="@+id/associations_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:layout_marginTop="16dp" />
-
+    <!-- Add "Retour" button -->
     <Button
-        android:id="@+id/example_button"
+        android:id="@+id/btn_retour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
-        android:text="Example Button"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/Vert3_palette"
+        android:text="@string/retour"
         android:textColor="@color/white" />
 </LinearLayout>

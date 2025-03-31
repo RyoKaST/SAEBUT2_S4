@@ -60,7 +60,15 @@ public class MyApp extends Application {
                 String logo = associationJson.getString("logo");
                 String lien = associationJson.optString("lien", ""); // Get the website link
 
-                associations.add(new Association(name, desc, logo, lien));
+                // Extract tags
+                JSONArray tagsArray = associationJson.getJSONArray("tags");
+                List<String> tags = new ArrayList<>();
+                for (int j = 0; j < tagsArray.length(); j++) {
+                    tags.add(tagsArray.getString(j));
+                }
+
+                // Create Association object with tags
+                associations.add(new Association(name, desc, logo, lien, tags));
             }
         } catch (Exception e) {
             Log.e("MyApp", "Error loading associations from JSON", e);

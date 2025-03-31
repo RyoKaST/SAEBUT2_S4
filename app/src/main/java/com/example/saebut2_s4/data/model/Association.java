@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "associations")
 public class Association {
 
@@ -26,16 +28,20 @@ public class Association {
     @ColumnInfo(name = "lien")
     private String lien; // New field for the website link
 
+    @ColumnInfo(name = "tags")
+    private List<String> tags; // Add tags field
+
     // Default constructor for Room
     public Association() {
     }
 
     // Constructor
-    public Association(String nomAssociation, String descriptionAssociation, String logoUrl, String lien) {
+    public Association(String nomAssociation, String descriptionAssociation, String logoUrl, String lien, List<String> tags) {
         this.nomAssociation = nomAssociation;
         this.descriptionAssociation = descriptionAssociation;
         this.logoUrl = logoUrl;
         this.lien = lien;
+        this.tags = tags; // Initialize tags
     }
 
     // Getters and Setters
@@ -85,5 +91,13 @@ public class Association {
 
     public void setLien(String lien) {
         this.lien = lien;
+    }
+
+    public List<String> getTags() {
+        return tags; // Getter for tags
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags; // Setter for tags
     }
 }

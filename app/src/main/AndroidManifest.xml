@@ -55,6 +55,8 @@
             android:name=".ui.DonFinaliseActivity"
             android:exported="true" />
         <activity android:name=".ui.AssociationDetailsActivity" />
+        <!-- Add this entry for TagAssociationsActivity -->
+        <activity android:name=".ui.TagAssociationsActivity" />
     </application>
 
 </manifest>
