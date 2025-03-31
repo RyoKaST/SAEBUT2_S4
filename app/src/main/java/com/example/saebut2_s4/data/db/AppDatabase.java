@@ -13,9 +13,11 @@ import com.example.saebut2_s4.data.model.Don;
 import com.example.saebut2_s4.data.model.Utilisateur;
 import com.example.saebut2_s4.data.model.Association;
 
-@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 9)
+
+@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 10)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
+
     public abstract DonDao donDao();
     public abstract UtilisateurDao utilisateurDao();
     public abstract AssociationDao associationDao();
@@ -23,7 +25,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "saebut2_s4_database").fallbackToDestructiveMigration()
+                            AppDatabase.class, "saebut2_s4_database")
+                    .fallbackToDestructiveMigration() // Use destructive migration for now
                     .build();
         }
         return INSTANCE;

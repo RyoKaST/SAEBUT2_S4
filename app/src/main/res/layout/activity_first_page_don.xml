@@ -69,6 +69,33 @@
                 android:text="@string/don_rec"
                 android:background="@drawable/input_background"/>
         </RadioGroup>
+            <!-- FrameLayout to toggle between RadioButton and Login Button -->
+            <FrameLayout
+                android:id="@+id/don_recurrent_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40sp">
+            
+                <!-- RadioButton for recurring donations -->
+                <RadioButton
+                    android:id="@+id/don_recurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/don_rec"
+                    android:background="@drawable/input_background" />
+
+                <!-- Button for login -->
+                <Button
+                    android:id="@+id/login_for_recurrent_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Connectez-vous pour un don régulier"
+                    android:backgroundTint="@color/Vert3_palette"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </FrameLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,6 +114,7 @@
 
                 <EditText
                     android:id="@+id/montant_edit_text"
+                    android:id="@+id/montant_input"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:hint="@string/montant_input"

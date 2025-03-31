@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name=".ui.ApplicationGlobale"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -64,6 +66,7 @@
         <activity
             android:name=".ui.DonFinaliseActivity"
             android:exported="true" />
+        <activity android:name=".ui.AssociationDetailsActivity" />
     </application>
 
 </manifest>

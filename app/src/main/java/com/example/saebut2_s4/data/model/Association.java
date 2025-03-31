@@ -8,24 +8,37 @@ import androidx.room.PrimaryKey;
 public class Association {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id_association")
+    @ColumnInfo(name = "id_association")
     private long idAssociation;
 
-    @ColumnInfo(name="nom_association")
+    @ColumnInfo(name = "nom_association")
     private String nomAssociation;
 
-    @ColumnInfo(name="description_association")
+    @ColumnInfo(name = "description_association")
     private String descriptionAssociation;
 
-    @ColumnInfo(name="siteweb_association")
+    @ColumnInfo(name = "siteweb_association")
     private String siteweb;
 
-    // Constructeur public sans argument pour Room
+    @ColumnInfo(name = "logo_url")
+    private String logoUrl;
+
+    @ColumnInfo(name = "lien")
+    private String lien; // New field for the website link
+
+    // Default constructor for Room
     public Association() {
     }
 
-    // Getters et Setters
+    // Constructor
+    public Association(String nomAssociation, String descriptionAssociation, String logoUrl, String lien) {
+        this.nomAssociation = nomAssociation;
+        this.descriptionAssociation = descriptionAssociation;
+        this.logoUrl = logoUrl;
+        this.lien = lien;
+    }
 
+    // Getters and Setters
     public long getIdAssociation() {
         return idAssociation;
     }
@@ -56,5 +69,21 @@ public class Association {
 
     public void setSiteweb(String siteweb) {
         this.siteweb = siteweb;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getLien() {
+        return lien;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
     }
 }

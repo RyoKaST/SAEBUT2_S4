@@ -44,6 +44,28 @@ public class FirstPageDonActivity extends AppCompatActivity {
 
         // Configuration de l'EditText pour n'accepter que des chiffres
         montantEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        // Check login status
+        boolean isLoggedIn = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .getBoolean("is_logged_in", false);
+
+        RadioButton donRecurrent = findViewById(R.id.don_recurrent);
+        Button loginForRecurrentDonation = findViewById(R.id.login_for_recurrent_donation);
+
+        if (isLoggedIn) {
+            // Show the RadioButton for recurring donations
+            donRecurrent.setVisibility(View.VISIBLE);
+            loginForRecurrentDonation.setVisibility(View.GONE);
+        } else {
+            // Show the login button
+            donRecurrent.setVisibility(View.GONE);
+            loginForRecurrentDonation.setVisibility(View.VISIBLE);
+
+            // Set click listener for the login button
+            loginForRecurrentDonation.setOnClickListener(v -> {
+                Intent intent = new Intent(this, ConnexionActivity.class);
+                startActivity(intent);
+            });
+        }
 
         Button buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +95,28 @@ public class FirstPageDonActivity extends AppCompatActivity {
 
                     }
                 }
+=======
+        buttonNext.setOnClickListener(v -> {
+            EditText montantInput = findViewById(R.id.montant_input);
+
+            String montantText = montantInput.getText().toString().trim();
+            if (montantText.isEmpty()) {
+                Toast.makeText(this, "Veuillez saisir un montant", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double montant = Double.parseDouble(montantText);
+
+            if (isLoggedIn) {
+                // Redirect logged-in users to MoyenPaiementActivity
+                Intent intent = new Intent(FirstPageDonActivity.this, MoyenPaiementActivity.class);
+                intent.putExtra("montant", montant);
+                startActivity(intent);
+            } else {
+                // Redirect non-logged-in users to EffectuerDonActivity
+                Intent intent = new Intent(FirstPageDonActivity.this, EffectuerDonActivity.class);
+                intent.putExtra("montant", montant);
+                startActivity(intent);
             }
         });
     }

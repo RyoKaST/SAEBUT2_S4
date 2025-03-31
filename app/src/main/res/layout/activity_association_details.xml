@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Vert3_palette"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/association_logo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/logo_de_solidall"
+        android:paddingBottom="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background_vert1"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:id="@+id/association_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/association_description"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/white"
+            android:paddingBottom="8dp" />
+
+        <Button
+            android:id="@+id/association_siteweb_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/visiter_le_site_web"
+            android:backgroundTint="@color/Vert1_palette"
+            android:textColor="@color/blue_primary"
+            android:layout_marginBottom="20dp"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/donner_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/faire_un_don"
+        android:backgroundTint="@color/Orange_palette"
+        android:layout_margin="10dp"
+        android:textColor="@color/white" />
+
+</LinearLayout>

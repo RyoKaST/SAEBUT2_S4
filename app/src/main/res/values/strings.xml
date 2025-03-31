@@ -39,4 +39,8 @@
     <string name="don_rec">Don récurrent (nécessite un compte utilisateur)</string>
     <string name="don_unique">Don unique</string>
     <string name="je_valide_mon_paiement">Je valide mon paiement</string>
+    <string name="search_hint">Search associations...</string>
+    <string name="visit_website">Visit Website</string>
+    <string name="visiter_le_site_web">Visiter le site web</string>
+    <string name="logout">Déconnexion</string>
 </resources>
