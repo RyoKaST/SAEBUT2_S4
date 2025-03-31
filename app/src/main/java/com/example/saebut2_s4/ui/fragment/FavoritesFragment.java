@@ -62,7 +62,6 @@ public class FavoritesFragment extends Fragment {
                 tile.setOnClickListener(v -> {
                     // Log and Toast to confirm the click
                     Log.d(TAG, "Tag clicked: " + tag);
-                    Toast.makeText(requireContext(), "Tag clicked: " + tag, Toast.LENGTH_SHORT).show();
 
                     // Open TagAssociationsActivity
                     Intent intent = new Intent(requireContext(), TagAssociationsActivity.class);

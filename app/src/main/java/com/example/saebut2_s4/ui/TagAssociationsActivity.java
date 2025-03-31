@@ -28,7 +28,7 @@ public class TagAssociationsActivity extends AppCompatActivity {
 
         // Get the clicked tag from the intent
         String tag = getIntent().getStringExtra("tag");
-        tagTitle.setText("Associations for: " + tag);
+        tagTitle.setText(tag);
 
         // Filter associations by the tag
         List<Association> associations = MyApp.getInstance().getAssociations();

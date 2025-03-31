@@ -1,9 +1,11 @@
 package com.example.saebut2_s4.ui;
 
 import android.content.Intent;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class AssociationDetailsActivity extends AppCompatActivity {
         TextView descriptionTextView = findViewById(R.id.association_description);
         Button sitewebButton = findViewById(R.id.association_siteweb_button);
         Button donnerButton = findViewById(R.id.donner_button);
+        Button buttonBack = findViewById(R.id.buttonBack);
 
         // Get data from intent
         String name = getIntent().getStringExtra("association_name");
@@ -69,5 +72,13 @@ public class AssociationDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(AssociationDetailsActivity.this, FirstPageDonActivity.class);
             startActivity(intent);
         });
+
+         // Set click listener for the "buttonBack" button
+        buttonBack.setOnClickListener(v -> {
+            Log.d(TAG, "Back button clicked");
+            Intent intent = new Intent(AssociationDetailsActivity.this, AccueilActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

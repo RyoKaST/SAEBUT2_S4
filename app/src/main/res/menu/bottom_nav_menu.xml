@@ -16,7 +16,7 @@
     <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/favoris"
+        android:title="@string/tags"
         android:enabled="true"/>
 
     <item

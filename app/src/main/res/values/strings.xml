@@ -43,4 +43,5 @@
     <string name="visit_website">Visit Website</string>
     <string name="visiter_le_site_web">Visiter le site web</string>
     <string name="logout">Déconnexion</string>
+    <string name="tags">Tags</string>
 </resources>

@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/visiter_le_site_web"
                     android:backgroundTint="@color/Vert1_palette"
-                    android:textColor="@color/blue_primary"
+                    android:textColor="@color/Bleu_palette"
                     android:layout_marginBottom="20dp"
                     android:padding="8dp" />
             </LinearLayout>
