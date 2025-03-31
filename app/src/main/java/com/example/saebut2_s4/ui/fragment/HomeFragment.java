@@ -13,9 +13,10 @@ import com.example.saebut2_s4.data.dao.DonDao;
 import com.example.saebut2_s4.data.db.AppDatabase;
 import com.example.saebut2_s4.data.model.Don;
 import com.example.saebut2_s4.data.dao.AssociationDao; // Add this import
-
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Date;
+
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -74,7 +75,7 @@ public class HomeFragment extends Fragment {
     private void loadUserDonations(long userId, LinearLayout donationListLayout) {
         AppDatabase appDatabase = AppDatabase.getInstance(getContext());
         DonDao donDao = appDatabase.donDao();
-        AssociationDao associationDao = appDatabase.associationDao(); // Add this line
+        AssociationDao associationDao = appDatabase.associationDao();
 
         Log.d("HomeFragment", "Loading donations for user ID: " + userId);
 
@@ -93,12 +94,21 @@ public class HomeFragment extends Fragment {
                 for (Don donation : donations) {
                     new Thread(() -> {
                         String associationName = associationDao.getAssociationById(donation.getAssociationIdDon()).getNomAssociation();
-                        String formattedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Long.parseLong(donation.getDateDon()));
+                        String formattedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date(Long.parseLong(donation.getDateDon())));
+                        String nextPaymentDate = donation.getNextPaymentDate() != null
+                            ? new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date(Long.parseLong(donation.getNextPaymentDate())))
+                            : null;
 
                         requireActivity().runOnUiThread(() -> {
                             TextView donationView = new TextView(getContext());
-                            donationView.setText(String.format("Don de %.2f€ à %s le %s",
-                                donation.getMontantDon(), associationName, formattedDate));
+                            String donationText = String.format("Don de %.2f€ à %s le %s",
+                                donation.getMontantDon(), associationName, formattedDate);
+
+                            if (donation.isRecurrent()) {
+                                donationText += String.format(" (Récurrent, prochain paiement : %s)", nextPaymentDate);
+                            }
+
+                            donationView.setText(donationText);
                             donationView.setTextColor(getResources().getColor(R.color.white));
                             donationView.setTextSize(14);
                             donationListLayout.addView(donationView);

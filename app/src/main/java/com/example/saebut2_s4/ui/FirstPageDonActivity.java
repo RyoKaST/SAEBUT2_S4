@@ -79,17 +79,20 @@ public class FirstPageDonActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(v -> {
             if (validateForm()) {
                 String montantValue = montantEditText.getText().toString();
+                boolean isRecurrent = donRecurrent.isChecked(); // Check if the recurring option is selected
 
                 // Navigate based on login status
                 if (isLoggedIn) {
                     // Redirect logged-in users to MoyenPaiementActivity
                     Intent intent = new Intent(FirstPageDonActivity.this, MoyenPaiementActivity.class);
                     intent.putExtra("montant", montantValue);
+                    intent.putExtra("is_recurrent", isRecurrent); // Pass the recurring status
                     startActivity(intent);
                 } else {
                     // Redirect non-logged-in users to EffectuerDonActivity
                     Intent intent = new Intent(FirstPageDonActivity.this, EffectuerDonActivity.class);
                     intent.putExtra("montant", montantValue);
+                    intent.putExtra("is_recurrent", isRecurrent); // Pass the recurring status
                     startActivity(intent);
                 }
             }

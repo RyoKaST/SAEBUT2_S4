@@ -21,6 +21,7 @@ import com.example.saebut2_s4.data.dao.DonDao;
 import com.example.saebut2_s4.data.model.Don; // Import the Don class
 import com.example.saebut2_s4.data.model.Association; // Add this import
 import java.util.List; // Ensure this import is present
+import java.util.Calendar;
 
 public class MoyenPaiementActivity extends AppCompatActivity {
     private EditText editTextCardNumber, editTextExpiry, editTextCVC;
@@ -180,6 +181,7 @@ public class MoyenPaiementActivity extends AppCompatActivity {
             }
 
             String montant = getIntent().getStringExtra("montant");
+            boolean isRecurrent = getIntent().getBooleanExtra("is_recurrent", false); // Get the recurring status
 
             // Log the retrieved association ID
             Log.d("MoyenPaiementActivity", "Retrieved association ID: " + associationId);
@@ -205,11 +207,23 @@ public class MoyenPaiementActivity extends AppCompatActivity {
 
             if (userId != -1 && associationId != -1 && montant != null) {
                 try {
+                    String currentDate = String.valueOf(System.currentTimeMillis());
+                    String nextPaymentDate = null;
+
+                    if (isRecurrent) {
+                        // Calculate the next payment date (30 days later)
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.add(Calendar.DAY_OF_MONTH, 30);
+                        nextPaymentDate = String.valueOf(calendar.getTimeInMillis());
+                    }
+
                     Don don = new Don(
                         Double.parseDouble(montant), // Donation amount
-                        String.valueOf(System.currentTimeMillis()), // Current timestamp as the donation date
+                        currentDate, // Current timestamp as the donation date
                         userId,
-                        associationId
+                        associationId,
+                        isRecurrent, // Save the recurring status
+                        nextPaymentDate // Save the next payment date
                     );
                     donDao.inserer(don); // Save the donation in the database
                     Log.d("MoyenPaiementActivity", "Donation saved successfully");
