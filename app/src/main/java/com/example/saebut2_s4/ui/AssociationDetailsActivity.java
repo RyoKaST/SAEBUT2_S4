@@ -68,7 +68,17 @@ public class AssociationDetailsActivity extends AppCompatActivity {
 
         // Set click listener for the "Donner" button
         donnerButton.setOnClickListener(v -> {
-            Log.d(TAG, "Donner button clicked"); // Log the click event
+            Log.d(TAG, "Donner button clicked");
+
+            // Save the association ID in SharedPreferences
+            long associationId = getIntent().getLongExtra("association_id", -1);
+            if (associationId != -1) {
+                getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                    .putLong("selected_association_id", associationId)
+                    .apply();
+            }
+
+            // Navigate to the donation page
             Intent intent = new Intent(AssociationDetailsActivity.this, FirstPageDonActivity.class);
             startActivity(intent);
         });

@@ -4,6 +4,7 @@
     android:background="@color/Vert3_palette">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Accueil"
@@ -32,6 +33,17 @@
             android:backgroundTint="@color/Vert1_palette"
             android:text="Effectuer un don" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/donation_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="15dp"
+        android:layout_below="@id/title"
+        android:padding="10dp"
+        android:background="@drawable/rounded_background_vert1">
     </LinearLayout>
 
 </FrameLayout>

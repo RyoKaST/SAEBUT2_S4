@@ -20,8 +20,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import com.example.saebut2_s4.data.dao.UtilisateurDao;
+import com.example.saebut2_s4.data.dao.DonDao; // Import DonDao
 import com.example.saebut2_s4.data.db.AppDatabase;
 import com.example.saebut2_s4.data.model.Utilisateur;
+import com.example.saebut2_s4.data.model.Don;
+
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {
@@ -54,7 +58,7 @@ public class ProfileFragment extends Fragment {
             // Load user details from the database
             loadUserDetails(userEmail, user -> {
                 if (user != null) {
-                    accountInfo.setText("Utilisateur : " + user.getNomUtilisateur() + " " + user.getPrenomUtilisateur());
+                    accountInfo.setText(user.getNomUtilisateur() + " " + user.getPrenomUtilisateur());
                     mailInfo.setText("E-Mail : " + user.getEmailUtilisateur());
                     phoneInfo.setText("Téléphone : " + user.getTelephoneUtilisateur());
                     nameInfo.setText("Nom : " + user.getNomUtilisateur());
@@ -64,14 +68,14 @@ public class ProfileFragment extends Fragment {
 
             // Handle email modification
             view.findViewById(R.id.mail_change).setOnClickListener(v -> {
-                showEditDialog("Modifier l'email", mailInfo.getText().toString(), newEmail -> {
+                showEditDialog("Modifier l'email", mailInfo.getText().toString().replace("E-Mail : ", ""), newEmail -> {
                     if (!newEmail.isEmpty()) {
                         isEmailUnique(newEmail, isUnique -> {
                             if (isUnique) {
                                 updateUserDetails(userEmail, "email", newEmail, success -> {
                                     if (success) {
                                         mailInfo.setText("E-Mail : " + newEmail);
-                                        saveToSharedPreferences("user_email", newEmail);
+                                        Toast.makeText(getContext(), "Email mis à jour avec succès", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             } else {
@@ -84,11 +88,12 @@ public class ProfileFragment extends Fragment {
 
             // Handle phone modification
             view.findViewById(R.id.phone_change).setOnClickListener(v -> {
-                showEditDialog("Modifier le téléphone", phoneInfo.getText().toString(), newPhone -> {
+                showEditDialog("Modifier le téléphone", phoneInfo.getText().toString().replace("Téléphone : ", ""), newPhone -> {
                     if (!newPhone.isEmpty()) {
                         updateUserDetails(userEmail, "telephone", newPhone, success -> {
                             if (success) {
                                 phoneInfo.setText("Téléphone : " + newPhone);
+                                Toast.makeText(getContext(), "Téléphone mis à jour avec succès", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -97,11 +102,12 @@ public class ProfileFragment extends Fragment {
 
             // Handle name modification
             view.findViewById(R.id.modify_name).setOnClickListener(v -> {
-                showEditDialog("Modifier le nom", nameInfo.getText().toString(), newName -> {
+                showEditDialog("Modifier le nom", nameInfo.getText().toString().replace("Nom : ", ""), newName -> {
                     if (!newName.isEmpty()) {
                         updateUserDetails(userEmail, "nom", newName, success -> {
                             if (success) {
                                 nameInfo.setText("Nom : " + newName);
+                                Toast.makeText(getContext(), "Nom mis à jour avec succès", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -110,11 +116,12 @@ public class ProfileFragment extends Fragment {
 
             // Handle first name modification
             view.findViewById(R.id.modify_first_name).setOnClickListener(v -> {
-                showEditDialog("Modifier le prénom", firstNameInfo.getText().toString(), newFirstName -> {
+                showEditDialog("Modifier le prénom", firstNameInfo.getText().toString().replace("Prénom : ", ""), newFirstName -> {
                     if (!newFirstName.isEmpty()) {
                         updateUserDetails(userEmail, "prenom", newFirstName, success -> {
                             if (success) {
                                 firstNameInfo.setText("Prénom : " + newFirstName);
+                                Toast.makeText(getContext(), "Prénom mis à jour avec succès", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -198,11 +205,34 @@ public class ProfileFragment extends Fragment {
                         break;
                 }
                 utilisateurDao.update(user);
-                requireActivity().runOnUiThread(() -> listener.onUpdate(true));
+
+                // Re-fetch updated user details from the database
+                Utilisateur updatedUser = utilisateurDao.getUtilisateurByEmail(user.getEmailUtilisateur());
+
+                requireActivity().runOnUiThread(() -> {
+                    if (updatedUser != null) {
+                        updateUIWithUserDetails(updatedUser);
+                    }
+                    listener.onUpdate(true);
+                });
             } else {
                 requireActivity().runOnUiThread(() -> listener.onUpdate(false));
             }
         }).start();
+    }
+
+    private void updateUIWithUserDetails(Utilisateur user) {
+        TextView accountInfo = getView().findViewById(R.id.account_info);
+        TextView mailInfo = getView().findViewById(R.id.mail_info);
+        TextView phoneInfo = getView().findViewById(R.id.phone_info);
+        TextView nameInfo = getView().findViewById(R.id.name_info);
+        TextView firstNameInfo = getView().findViewById(R.id.first_name_info);
+
+        accountInfo.setText(user.getNomUtilisateur() + " " + user.getPrenomUtilisateur());
+        mailInfo.setText("E-Mail : " + user.getEmailUtilisateur());
+        phoneInfo.setText("Téléphone : " + user.getTelephoneUtilisateur());
+        nameInfo.setText("Nom : " + user.getNomUtilisateur());
+        firstNameInfo.setText("Prénom : " + user.getPrenomUtilisateur());
     }
 
     private void isEmailUnique(String email, OnEmailCheckListener listener) {
@@ -231,7 +261,7 @@ public class ProfileFragment extends Fragment {
     private void showEditDialog(String title, String currentValue, OnValueChangeListener listener) {
         // Create and show a dialog for editing user information
         EditText input = new EditText(getContext());
-        input.setText(currentValue);
+        input.setText(currentValue); // Set only the value, without labels like "Nom :" or "Prénom :"
 
         new AlertDialog.Builder(getContext())
                 .setTitle(title)
@@ -255,5 +285,13 @@ public class ProfileFragment extends Fragment {
         // Retrieve login status from SharedPreferences
         return requireContext().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE)
                 .getBoolean("is_logged_in", false);
+    }
+
+    private void refreshFragment() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .detach(this)
+                .attach(this)
+                .commit();
     }
 }

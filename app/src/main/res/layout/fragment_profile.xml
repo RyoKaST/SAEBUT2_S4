@@ -183,6 +183,16 @@
                 app:tint="@android:color/white" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/donation_history_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/rounded_background_vert1">
+        </LinearLayout>
+
         <Button
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
