@@ -13,7 +13,8 @@ import com.example.saebut2_s4.data.model.Don;
 import com.example.saebut2_s4.data.model.Utilisateur;
 import com.example.saebut2_s4.data.model.Association;
 
-@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 6) // Incremented version to 5
+
+@Database(entities = {Don.class, Utilisateur.class, Association.class}, version = 10)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
