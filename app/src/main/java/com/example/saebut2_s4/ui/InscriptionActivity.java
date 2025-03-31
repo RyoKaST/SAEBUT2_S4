@@ -98,11 +98,12 @@ public class InscriptionActivity extends AppCompatActivity {
             u.setMotDePasseUtilisateur(mdpText);
 
             try {
-                utilisateurDao.inserer(u);
+                long userId = utilisateurDao.inserer(u); // Insert user and get the generated ID
 
                 // Save user info in SharedPreferences
                 getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
                     .putBoolean("is_logged_in", true)
+                    .putLong("user_id", userId) // Store the user ID
                     .putString("user_name", nomText + " " + prenomText)
                     .putString("user_email", emailText)
                     .apply();

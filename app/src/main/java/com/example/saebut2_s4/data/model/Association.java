@@ -9,7 +9,7 @@ import java.util.List;
 @Entity(tableName = "associations")
 public class Association {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) // Ensure IDs are auto-generated
     @ColumnInfo(name = "id_association")
     private long idAssociation;
 

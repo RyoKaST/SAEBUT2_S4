@@ -24,4 +24,7 @@ public interface AssociationDao {
 
     @Query("SELECT * FROM associations")
     List<Association> getAllAssociations();
+
+    @Query("SELECT * FROM associations WHERE id_association = :associationId")
+    Association getAssociationById(long associationId);
 }

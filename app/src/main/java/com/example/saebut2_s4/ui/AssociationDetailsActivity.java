@@ -22,6 +22,19 @@ public class AssociationDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_association_details);
 
+        // Retrieve the selected association ID from the intent
+        long associationId = getIntent().getLongExtra("association_id", -1);
+
+        // Log and store the association ID in SharedPreferences
+        if (associationId != -1) {
+            getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                .putLong("selected_association_id", associationId)
+                .apply();
+            Log.d("AssociationDetails", "Selected association ID stored: " + associationId);
+        } else {
+            Log.e("AssociationDetails", "Invalid association ID received");
+        }
+
         ImageView logoImageView = findViewById(R.id.association_logo);
         TextView nameTextView = findViewById(R.id.association_name);
         TextView descriptionTextView = findViewById(R.id.association_description);
@@ -71,7 +84,6 @@ public class AssociationDetailsActivity extends AppCompatActivity {
             Log.d(TAG, "Donner button clicked");
 
             // Save the association ID in SharedPreferences
-            long associationId = getIntent().getLongExtra("association_id", -1);
             if (associationId != -1) {
                 getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
                     .putLong("selected_association_id", associationId)

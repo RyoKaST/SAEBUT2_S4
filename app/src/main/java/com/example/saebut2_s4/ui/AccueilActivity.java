@@ -64,12 +64,11 @@ public class AccueilActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottom_navigation);
         fragmentManager = getSupportFragmentManager();
 
-        // Initialize fragments
+        // Load the HomeFragment by default
         if (savedInstanceState == null) {
-            initializeFragments();
-        } else {
-            // Restore active fragment after configuration change
-            activeFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, new HomeFragment(), "home");
+            transaction.commit();
         }
 
         setupNavigation();
@@ -141,5 +140,15 @@ public class AccueilActivity extends AppCompatActivity {
         activeFragment = fragment;
 
         transaction.commit();
+    }
+
+    public void navigateToAssociationDetails(long associationId, String name, String description, String siteweb, String logoUrl) {
+        Intent intent = new Intent(this, AssociationDetailsActivity.class);
+        intent.putExtra("association_id", associationId); // Pass the association ID
+        intent.putExtra("association_name", name); // Pass the association name
+        intent.putExtra("association_description", description); // Pass the association description
+        intent.putExtra("association_siteweb", siteweb); // Pass the association website
+        intent.putExtra("association_logo", logoUrl); // Pass the association logo URL
+        startActivity(intent);
     }
 }

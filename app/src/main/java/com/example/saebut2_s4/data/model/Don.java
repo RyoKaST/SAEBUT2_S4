@@ -1,27 +1,14 @@
 package com.example.saebut2_s4.data.model;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
-import static androidx.room.ForeignKey.CASCADE;
-
-@Entity(tableName = "dons",
-        foreignKeys = {
-                @ForeignKey(entity = Utilisateur.class,
-                        parentColumns = "id_utilisateur",
-                        childColumns = "id_utilisateur",
-                        onDelete = CASCADE),
-                @ForeignKey(entity = Association.class,
-                        parentColumns = "id_association",
-                        childColumns = "id_association",
-                        onDelete = CASCADE)
-        })
+@Entity(tableName = "dons")
 public class Don {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id_don")
+    @ColumnInfo(name = "id_don")
     private long idDon;
 
     @ColumnInfo(name = "montant_don")

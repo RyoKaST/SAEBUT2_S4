@@ -95,13 +95,19 @@ public class EffectuerDonActivity extends AppCompatActivity {
             long associationId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("selected_association_id", -1);
 
             if (userId != -1 && associationId != -1) {
-                Don don = new Don(
-                    Double.parseDouble(montant), // Donation amount
-                    String.valueOf(System.currentTimeMillis()), // Current timestamp as the donation date
-                    userId,
-                    associationId
-                );
-                donDao.inserer(don); // Save the donation in the database
+                try {
+                    Don don = new Don(
+                        Double.parseDouble(montant), // Donation amount
+                        String.valueOf(System.currentTimeMillis()), // Current timestamp as the donation date
+                        userId,
+                        associationId
+                    );
+                    donDao.inserer(don); // Save the donation in the database
+                } catch (Exception e) {
+                    runOnUiThread(() -> Toast.makeText(this, "Erreur lors de l'enregistrement du don.", Toast.LENGTH_SHORT).show());
+                }
+            } else {
+                runOnUiThread(() -> Toast.makeText(this, "Utilisateur ou association invalide.", Toast.LENGTH_SHORT).show());
             }
         }).start();
     }
