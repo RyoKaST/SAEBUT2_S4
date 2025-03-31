@@ -44,4 +44,6 @@
     <string name="visiter_le_site_web">Visiter le site web</string>
     <string name="logout">Déconnexion</string>
     <string name="tags">Tags</string>
+    <string name="connectez_vous_pour_un_don_r_gulier">Connectez-vous pour un don régulier</string>
+    <string name="chercher_une_association">Chercher une association...</string>
 </resources>

@@ -31,7 +31,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:layout_marginTop="25dp"
@@ -40,7 +40,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/typeDon"
             android:textSize="20sp"
@@ -50,7 +50,7 @@
             android:paddingBottom="20dp" />
         <RadioGroup
             android:id="@+id/radio_group_don"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <RadioButton
@@ -76,8 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Connectez-vous pour un don régulier"
-            android:backgroundTint="@color/Vert3_palette"
+            android:text="@string/connectez_vous_pour_un_don_r_gulier"
+            android:backgroundTint="@color/Vert1_palette"
             android:textColor="@color/white"
             android:visibility="gone" />
 
