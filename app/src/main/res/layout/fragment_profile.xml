@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
+        android:background="@drawable/rounded_background_vert1"
         android:layout_marginHorizontal="15dp"
+        android:paddingVertical="15dp"
         android:layout_centerInParent="true">
 
         <TextView
