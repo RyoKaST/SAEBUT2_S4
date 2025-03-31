@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="10dp"
+    android:id="@+id/main"
     android:background="@color/Vert3_palette"
-    tools:context=".ui.ConnexionActivity">
+    tools:context=".ui.InscriptionActivity">
 
     <!-- Layout contenant le logo en haut à gauche et "Passer" en haut à droite -->
     <LinearLayout
@@ -25,6 +25,12 @@
             android:layout_marginStart="10dp"
             android:src="@drawable/logo_solidall" />
 
+        <!-- Espace flexible pour centrer "Passer" -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <!-- Nom de l'application -->
@@ -37,9 +43,32 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="20dp" />
 
     <!-- Champ E-mail -->
+    <EditText
+        android:id="@+id/nom"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:hint="Nom"
+        android:background="@drawable/input_background"
+        android:padding="15dp"
+        android:paddingBottom="50dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/prenom"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:hint="Prénom"
+        android:background="@drawable/input_background"
+        android:padding="15dp"
+        android:paddingBottom="50dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp" />
+
     <EditText
         android:id="@+id/email"
         android:layout_width="350dp"
@@ -49,7 +78,19 @@
         android:background="@drawable/input_background"
         android:padding="15dp"
         android:paddingBottom="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/telephone"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:hint="@string/telephone"
+        android:background="@drawable/input_background"
+        android:padding="15dp"
+        android:paddingBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:textSize="16sp" />
 
     <!-- Champ Mot de passe -->
@@ -71,7 +112,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:hint="@string/mot_de_passe"
+            android:hint="Mot de passe "
             android:background="@drawable/input_background"
             android:padding="15dp"
             android:paddingBottom="50dp"
@@ -85,23 +126,12 @@
             app:tint="@color/Bleu_palette" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mot_de_passe_oubli"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_gravity="end"/>
-
     <!-- Bouton Connexion -->
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_inscription"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:text="@string/connexion"
+        android:text="@string/inscription"
         android:textSize="23sp"
         android:layout_gravity="center"
         android:textColor="@color/white"
@@ -144,34 +174,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/vous_n_avez_pas_de_compte"
+        android:text="@string/vous_avez_deja_un_compte"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_connexion"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:text="@string/inscription"
-        android:layout_marginTop="20dp"
-        android:textSize="23sp"
         android:layout_gravity="center"
-        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/Vert1_palette"
-        />
-
-    <Button
-        android:id="@+id/btn_retour"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/retour"
-        android:layout_marginTop="20dp"
-        android:textSize="23sp"
-        android:layout_gravity="center"
+        android:text="@string/connexion"
         android:textColor="@color/white"
-        android:backgroundTint="@color/Orange_palette"
-        />
-
-
+        android:textSize="23sp" />
 </LinearLayout>

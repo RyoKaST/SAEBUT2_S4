@@ -48,7 +48,11 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:paddingBottom="20dp" />
-
+        <RadioGroup
+            android:id="@+id/radio_group_don"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <RadioButton
                 android:id="@+id/don_unique"
                 android:layout_width="match_parent"
@@ -59,12 +63,12 @@
 
             <RadioButton
                 android:id="@+id/don_recurrent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:text="@string/don_rec"
                 android:background="@drawable/input_background"/>
-
+        </RadioGroup>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,9 +86,11 @@
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
+                    android:id="@+id/montant_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:hint="@string/montant_input"
+                    android:inputType="number"
                     android:background="@drawable/input_background"/>
 
             </LinearLayout>
@@ -98,6 +104,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
+
 
         <Button
             android:id="@+id/buttonBack"

@@ -9,7 +9,7 @@
     android:id="@+id/main"
     android:fitsSystemWindows="true"
     android:background="@color/Vert3_palette"
-    tools:context=".ui.RecapDonActivity">
+    tools:context=".ui.RecapDon2Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
