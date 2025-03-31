@@ -15,7 +15,6 @@
             android:hint="Chercher une association..."
             android:padding="8dp"
             android:background="@color/Vert1_palette"
-            android:textColor="@color/white"
             android:drawableStart="@android:drawable/ic_menu_search"
             android:drawablePadding="8dp"
             android:inputType="text" />
