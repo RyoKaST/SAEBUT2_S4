@@ -19,6 +19,19 @@ public class EffectuerDonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check if the user is logged in
+        boolean isLoggedIn = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .getBoolean("is_logged_in", false);
+
+        if (isLoggedIn) {
+            // Redirect logged-in users to AccueilActivity
+            Intent intent = new Intent(this, AccueilActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_effectuer_don);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

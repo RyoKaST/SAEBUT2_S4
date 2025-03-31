@@ -35,6 +35,19 @@ public class ConnexionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check if the user is already logged in
+        boolean isLoggedIn = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .getBoolean("is_logged_in", false);
+
+        if (isLoggedIn) {
+            // Redirect logged-in users to AccueilActivity
+            Intent intent = new Intent(this, AccueilActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_connexion);
 
@@ -77,6 +90,13 @@ public class ConnexionActivity extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 if (utilisateur != null && utilisateur.getMotDePasseUtilisateur().equals(mdpText)) {
+                    // Save user info in SharedPreferences
+                    getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                        .putBoolean("is_logged_in", true)
+                        .putString("user_name", utilisateur.getNomUtilisateur() + " " + utilisateur.getPrenomUtilisateur())
+                        .putString("user_email", utilisateur.getEmailUtilisateur())
+                        .apply();
+
                     Toast.makeText(this, "Connexion réussie !", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, AccueilActivity.class);
                     startActivity(intent);

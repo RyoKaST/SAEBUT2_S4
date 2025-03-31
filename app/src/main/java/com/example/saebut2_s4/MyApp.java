@@ -1,55 +1,69 @@
 package com.example.saebut2_s4;
 
 import android.app.Application;
+import android.util.Log;
 
-import com.example.saebut2_s4.data.db.AppDatabase;
 import com.example.saebut2_s4.data.model.Association;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyApp extends Application {
 
     private static MyApp instance;
-    private AppDatabase appDatabase;
+    private List<Association> associations;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
 
-        appDatabase = AppDatabase.getInstance(this);
-
-        initialiserAssociations();
+        // Initialize the associations list
+        associations = new ArrayList<>();
+        loadAssociationsFromJson();
     }
 
     public static MyApp getInstance() {
         return instance;
     }
 
-    public AppDatabase getDatabase() {
-        return appDatabase;
-    }
-
     public List<Association> getAssociations() {
-        return appDatabase.associationDao().getAllAssociations();
+        return associations;
     }
 
-    private void initialiserAssociations() {
-        new Thread(() -> {
-            if (appDatabase.associationDao().getAllAssociations().isEmpty()) {
-                Association a1 = new Association();
-                a1.setNomAssociation("Croix-Rouge");
-                a1.setDescriptionAssociation("Aide humanitaire d'urgence");
-                a1.setSiteweb("https://www.croix-rouge.fr");
+    private void loadAssociationsFromJson() {
+        try {
+            // Load the JSON file from assets
+            InputStream inputStream = getAssets().open("asso.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
 
-                Association a2 = new Association();
-                a2.setNomAssociation("UNICEF");
-                a2.setDescriptionAssociation("Protection de l'enfance");
-                a2.setSiteweb("https://www.unicef.fr");
+            // Convert the JSON file content to a string
+            String json = new String(buffer, StandardCharsets.UTF_8);
 
-                appDatabase.associationDao().inserer(a1);
-                appDatabase.associationDao().inserer(a2);
+            // Parse the JSON
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.getJSONArray("associations");
+
+            // Populate the associations list
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject associationJson = jsonArray.getJSONObject(i);
+                String name = associationJson.getString("name");
+                String desc = associationJson.getString("desc");
+                String logo = associationJson.getString("logo");
+                String lien = associationJson.optString("lien", ""); // Get the website link
+
+                associations.add(new Association(name, desc, logo, lien));
             }
-        }).start();
+        } catch (Exception e) {
+            Log.e("MyApp", "Error loading associations from JSON", e);
+        }
     }
 }

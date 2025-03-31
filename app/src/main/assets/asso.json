@@ -1,0 +1,433 @@
+{
+    "associations": [
+        {
+            "name": "AFPric - Association française des Polyarthritiques et des rhumatismes inflammatoires chroniques",
+            "desc": "L'Association française des Polyarthritiques et des rhumatismes inflammatoires chroniques est une association loi 1901, reconnue d'utilité publique, qui mène de nombreuses actions d’information pour permettre à toutes et à tous de mieux comprendre la maladie et de mieux se repérer dans les traitements. Ses objectifs sont d’aider les patients à mieux vivre avec cette maladie chronique, de représenter et de défendre leurs intérêts et de promouvoir la recherche.",
+            "logo": "https://afpric.france-assos-sante.org/wp-content/uploads/sites/21/2022/01/Logo-AFP-avec-nom-300x117.jpg",
+            "tags": [
+                "polyarthrite",
+                "rhumatismes",
+                "maladies chroniques"
+            ],
+            "lien": "https://www.polyarthrite.org/"
+        },
+        {
+            "name": "A.M.I. nationale - Association nationale de défense des malades, invalides et handicapés",
+            "desc": "Depuis 1936, avec et pour les personnes malades, invalides et/ou en situation de handicap, l'A.M.I. nationale agit au quotidien sans discrimination ni privilège, avec pour objectifs de : promouvoir le 'vivre ensemble' avec nos différences, s'engager dans des actions de représentation et de revendication, défendre les personnes malades et les personnes en situation de handicap, soutenir ces personnes dans leur quotidien, contribuer à leur épanouissement par des activités ludiques, culturelles, sportives.",
+            "logo": "https://ami-handicap.france-assos-sante.org/wp-content/uploads/sites/117/2019/01/customLogo.png",
+            "tags": [
+                "handicap",
+                "maladies",
+                "inclusion"
+            ],
+            "lien": "https://ami-nationale.com/"
+        },
+        {
+            "name": "AAAVAM - Association nationale de défense des intérêts des victimes d'accidents des médicaments",
+            "desc": "L'AAAVAM a été fondée en 1992, suite au nombre de suicides de plus en plus élevés en France, imputables aux benzodiazépines. Buts de l'association : prévenir les citoyens des dangers de certains médicaments aux effets indésirables et paradoxaux très graves mal indiqués dans les notices d'utilisation ou dans le dictionnaire VIDAL®, obliger les médecins à avertir du danger de dépendance des drogues légales, faire interdire de la prescription courante les tranquillisants et les somnifères, les anti-cholestérols, certains anti-douleurs et autres 'produits de santé' trop actifs, aider à faire réviser les procès où ces médicaments ont été responsables de crises de violence ayant entraîné 'mort d’homme', faire réexaminer la nomination des médecins experts judiciaires auprès des Tribunaux, faire indemniser de manière équitable et automatique les victimes ou leur famille, faire poursuivre par la Justice les responsables sanitaires, représenter les utilisateurs, auprès des services de pharmacovigilance, et des C.R.C.I.",
+            "logo": "https://aaavam.france-assos-sante.org/wp-content/uploads/sites/23/2023/06/logo-300x92.png",
+            "tags": [
+                "victimes",
+                "médicaments",
+                "prévention"
+            ],
+            "lien": "https://www.aaavam.eu/"
+        },
+        {
+            "name": "FNATH - Association des accidentés de la vie",
+            "desc": "La FNATH accompagne et défend les personnes victimes d’accidents du travail, de maladies professionnelles, d’accidents de la vie, du travail et de la route. Elle agit également pour l’amélioration des conditions de vie des personnes en situation de handicap et de leurs familles.",
+            "logo": "https://fnath.france-assos-sante.org/wp-content/uploads/sites/86/2019/01/logo-fnath-200x201.jpg",
+            "tags": [
+                "accidentés",
+                "handicap",
+                "soutien"
+            ],
+            "lien": "https://www.fnath.org/"
+        },
+        {
+            "name": "France Alzheimer",
+            "desc": "France Alzheimer est une association qui accompagne les malades et leurs familles, soutient la recherche et sensibilise l'opinion publique sur la maladie d'Alzheimer et les maladies apparentées.",
+            "logo": "https://france-alzheimer.france-assos-sante.org/wp-content/uploads/sites/75/2019/01/Logo_de_France_Alzheimer_et_maladies_apparente%CC%81es.jpg",
+            "tags": [
+                "Alzheimer",
+                "soutien",
+                "recherche"
+            ],
+            "lien": "https://www.francealzheimer.org/"
+        },
+        {
+            "name": "Ligue Contre l'Obésité",
+            "desc": "La Ligue Contre l'Obésité agit pour la prévention, l'information et la prise en charge des personnes souffrant d'obésité afin de lutter contre la stigmatisation et promouvoir un meilleur accompagnement médical et social.",
+            "logo": "https://apf-france-handicap.france-assos-sante.org/wp-content/uploads/sites/78/2019/01/Logo-bloc-APF-France-handicap-bichromie-200x126.jpg",
+            "tags": [
+                "obésité",
+                "prévention",
+                "soutien"
+            ],
+            "lien": "https://www.apf-francehandicap.org"
+        },
+        {
+            "name": "Vaincre la Mucoviscidose",
+            "desc": "Vaincre la Mucoviscidose soutient la recherche, l'amélioration des soins et l'accompagnement des patients atteints de mucoviscidose et leurs familles.",
+            "logo": "https://vaincre-la-mucoviscidose.france-assos-sante.org/wp-content/uploads/sites/33/2019/01/vlm_logo.png",
+            "tags": [
+                "mucoviscidose",
+                "recherche",
+                "accompagnement"
+            ],
+            "lien": "www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjRy6bk7bKMAxW9LPsDHfNHMfcQFnoECAwQAQ&url=https%3A%2F%2Fwww.vaincrelamuco.org%2F&usg=AOvVaw10BrzjNe9nBeWc_bPlP7ig&opi=89978449"
+        },
+        {
+            "name": "AFM-Téléthon",
+            "desc": "AFM-Téléthon est une association de parents et de malades engagée dans le combat contre les maladies neuromusculaires et les maladies rares, notamment par le financement de la recherche et le soutien aux familles.",
+            "logo": "https://afm.france-assos-sante.org/wp-content/uploads/sites/29/2019/01/AFM_Telethon.svg_.png",
+            "tags": [
+                "téléthon",
+                "maladies rares",
+                "recherche"
+            ],
+            "lien": "https://don.telethon.fr/?bandeau=A&compteur=0&fdd_type=DT&idm=133864&ido=1258&gad_source=1&gclid=Cj0KCQjw16O_BhDNARIsAC3i2GAiGCcolyhT5L22NUOq-3i5J4OEtydZ186rs5fDo8ePqRCirDAXnW0aAufvEALw_wcB"
+        },
+        {
+            "name": "Association Laurette Fugain",
+            "desc": "L'Association Laurette Fugain lutte contre la leucémie en soutenant la recherche, en sensibilisant au don de sang, de plaquettes et de moelle osseuse, et en aidant les patients et leurs familles.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Laurette-Fugain.jpg",
+            "tags": [
+                "leucémie",
+                "don de moelle",
+                "recherche"
+            ],
+            "lien": "https://www.laurettefugain.org"
+        },
+        {
+            "name": "Petits Princes",
+            "desc": "L'Association Petits Princes réalise les rêves des enfants gravement malades pour leur donner de l'énergie et du courage dans leur combat contre la maladie.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Petits-Princes.jpg",
+            "tags": [
+                "enfants",
+                "rêves",
+                "soutien"
+            ],
+            "lien": "https://www.petitsprinces.com"
+        },
+        {
+            "name": "Alliance Maladies Rares",
+            "desc": "Alliance Maladies Rares regroupe des associations de patients atteints de maladies rares pour défendre leurs droits, favoriser la recherche et améliorer la prise en charge.",
+            "logo": "https://alliance-maladies-rares.france-assos-sante.org/wp-content/uploads/sites/72/2019/01/logo-AMR-200x185.jpg",
+            "tags": [
+                "maladies rares",
+                "recherche",
+                "droits des patients"
+            ],
+            "lien": "https://alliance-maladies-rares.org"
+        },
+        {
+            "name": "EPILEPSIE-France",
+            "desc": "EPILEPSIE-France accompagne les personnes épileptiques et leurs familles en les informant, en les soutenant et en favorisant leur inclusion dans la société.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Epilepsie-France.jpg",
+            "tags": [
+                "épilepsie",
+                "soutien",
+                "inclusion"
+            ],
+            "lien": "https://www.epilepsie-france.com"
+        },
+        {
+            "name": "L'Envol",
+            "desc": "L'Envol propose des séjours adaptés et des activités ludiques aux enfants gravement malades pour leur permettre de gagner en autonomie et en confiance.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/LEnvol.jpg",
+            "tags": [
+                "enfants",
+                "maladies chroniques",
+                "loisirs"
+            ],
+            "lien": "https://www.lenvol.asso.fr"
+        },
+        {
+            "name": "AIDES",
+            "desc": "AIDES est une association française de lutte contre le VIH/Sida et les hépatites virales, œuvrant pour la prévention, le dépistage et le soutien des personnes concernées.",
+            "logo": "https://aides.france-assos-sante.org/wp-content/uploads/sites/62/2019/01/AIDES_NOIR_2016-200x120.png",
+            "tags": [
+                "VIH",
+                "hépatites",
+                "prévention"
+            ],
+            "lien": "https://www.aides.org"
+        },
+        {
+            "name": "Autisme France",
+            "desc": "Autisme France est une association nationale qui défend les droits des personnes autistes et de leurs familles, en promouvant des prises en charge adaptées et en soutenant la recherche.",
+            "logo": "https://autisme-france.france-assos-sante.org/wp-content/uploads/sites/94/2019/01/autisme-france-Logo-200x200.jpg",
+            "tags": [
+                "autisme",
+                "droits",
+                "recherche"
+            ],
+            "lien": "https://www.autisme-france.fr"
+        },
+        {
+            "name": "Fédération Française des Diabétiques",
+            "desc": "La Fédération Française des Diabétiques informe, accompagne et défend les personnes atteintes de diabète, tout en menant des actions de prévention et en soutenant la recherche.",
+            "logo": "https://federation-francaise-diabetiques.france-assos-sante.org/wp-content/uploads/sites/113/2022/10/Logo-Federation-classique.png",
+            "tags": [
+                "diabète",
+                "prévention",
+                "soutien"
+            ],
+            "lien": "https://www.federationdesdiabetiques.org"
+        },
+        {
+            "name": "Union Nationale des Familles et Amis de Personnes Malades et/ou Handicapées Psychiques (UNAFAM)",
+            "desc": "L'UNAFAM soutient et accompagne les familles et amis de personnes vivant avec des troubles psychiques, tout en menant des actions de sensibilisation et de plaidoyer.",
+            "logo": "https://unafam.france-assos-sante.org/wp-content/uploads/sites/37/2019/01/logo-unafam-200x200.jpg",
+            "tags": [
+                "santé mentale",
+                "familles",
+                "accompagnement"
+            ],
+            "lien": "https://www.unafam.org"
+        },
+        {
+            "name": "France Rein",
+            "desc": "France Rein œuvre pour la prévention des maladies rénales, l’accompagnement des patients en insuffisance rénale et le développement du don d’organes.",
+            "logo": "https://france-rein.france-assos-sante.org/wp-content/uploads/sites/69/2019/01/fnair-logo.png",
+            "tags": [
+                "insuffisance rénale",
+                "don d'organes",
+                "soutien"
+            ],
+            "lien": "https://www.francerein.org"
+        },
+        {
+            "name": "Association Valentin Haüy",
+            "desc": "L'Association Valentin Haüy accompagne les personnes aveugles et malvoyantes en leur offrant des services d’accompagnement, d’accès à la culture et à l’emploi.",
+            "logo": "https://www.avh.asso.fr/themes/custom/avh/assets/images/avh_logo.svg",
+            "tags": [
+                "malvoyance",
+                "autonomie",
+                "accessibilité"
+            ],
+            "lien": "https://www.avh.asso.fr"
+        },
+        {
+            "name": "France Parkinson",
+            "desc": "France Parkinson accompagne les patients et leurs proches en leur proposant des conseils, du soutien et en finançant la recherche sur la maladie de Parkinson.",
+            "logo": "https://france-parkinson.france-assos-sante.org/wp-content/uploads/sites/71/2019/01/logo-france-parkinson-300x113.png",
+            "tags": [
+                "Parkinson",
+                "recherche",
+                "accompagnement"
+            ],
+            "lien": "https://www.franceparkinson.fr"
+        },
+        {
+            "name": "Vaincre la Sclérose en Plaques",
+            "desc": "Vaincre la Sclérose en Plaques soutient la recherche, informe et accompagne les patients atteints de sclérose en plaques ainsi que leurs familles.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Vaincre-SEP.jpg",
+            "tags": [
+                "sclérose en plaques",
+                "recherche",
+                "soutien"
+            ],
+            "lien": "https://www.arsep.org"
+        },
+        {
+            "name": "Fédération des Maladies Orphelines",
+            "desc": "La Fédération des Maladies Orphelines soutient les patients atteints de maladies rares, favorise la recherche et sensibilise le grand public.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Maladies-Orphelines.jpg",
+            "tags": [
+                "maladies rares",
+                "recherche",
+                "sensibilisation"
+            ],
+            "lien": "https://www.aflar.org"
+        },
+        {
+            "name": "ANCC - Association Nationale des Cardiaques Congénitaux",
+            "desc": "L'ANCC accompagne les personnes atteintes de cardiopathies congénitales et défend leurs droits à une prise en charge adaptée.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/ANCC.jpg",
+            "tags": [
+                "cardiopathies",
+                "soutien",
+                "droits"
+            ],
+            "lien": "https://www.ancc.asso.fr"
+        },
+        {
+            "name": "France Acouphènes",
+            "desc": "France Acouphènes informe, accompagne et soutient les personnes souffrant d'acouphènes et d'hyperacousie.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/France-Acouphenes.jpg",
+            "tags": [
+                "acouphènes",
+                "soutien",
+                "prévention"
+            ],
+            "lien": "https://www.france-acouphenes.fr"
+        },
+        {
+            "name": "Association Française des Hémophiles (AFH)",
+            "desc": "L'AFH soutient les personnes atteintes d'hémophilie et d'autres troubles de la coagulation en favorisant la recherche et l'accès aux soins.",
+            "logo": "https://afh.france-assos-sante.org/wp-content/uploads/sites/28/2019/01/Logo-AFH-v-nov2012.jpg",
+            "tags": [
+                "hémophilie",
+                "coagulation",
+                "soutien"
+            ],
+            "lien": "https://www.afh.asso.fr/page/3090093-accueil"
+        },
+        {
+            "name": "Fédération Française des Dys (FFDys)",
+            "desc": "La FFDys accompagne les personnes atteintes de troubles dys (dyslexie, dyspraxie, dysphasie, etc.), en promouvant l'accessibilité et l'intégration scolaire et professionnelle.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/FFDys.jpg",
+            "tags": [
+                "troubles dys",
+                "éducation",
+                "accessibilité"
+            ],
+            "lien": "https://www.ffdys.com"
+        },
+        {
+            "name": "France AVC",
+            "desc": "France AVC sensibilise le public à la prévention des accidents vasculaires cérébraux et accompagne les patients ainsi que leurs proches après un AVC.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/France-AVC.jpg",
+            "tags": [
+                "AVC",
+                "prévention",
+                "soutien"
+            ],
+            "lien": "https://www.franceavc.com"
+        },
+        {
+            "name": "Fibromyalgie France",
+            "desc": "Fibromyalgie France soutient les patients atteints de fibromyalgie, promeut la reconnaissance de la maladie et encourage la recherche médicale.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Fibromyalgie-France.jpg",
+            "tags": [
+                "fibromyalgie",
+                "recherche",
+                "sensibilisation"
+            ],
+            "lien": "https://www.fibromyalgie-france.org"
+        },
+        {
+            "name": "Association Française du Syndrome de Rett",
+            "desc": "L'Association Française du Syndrome de Rett accompagne les familles touchées par cette maladie rare et soutient la recherche scientifique.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Rett.jpg",
+            "tags": [
+                "syndrome de Rett",
+                "recherche",
+                "familles"
+            ],
+            "lien": "https://afsr.fr"
+        },
+        {
+            "name": "Union Nationale de Familles et Amis de Personnes Malades et/ou Handicapées Psychiques (UNAFAM)",
+            "desc": "L'UNAFAM accompagne les familles et amis de personnes vivant avec des troubles psychiques en offrant un soutien et en menant des actions de sensibilisation.",
+            "logo": "https://unafam.france-assos-sante.org/wp-content/uploads/sites/37/2019/01/logo-unafam-200x200.jpg",
+            "tags": [
+                "santé mentale",
+                "familles",
+                "accompagnement"
+            ],
+            "lien": "https://www.unafam.org"
+        },
+        {
+            "name": "Association des Paralysés de France (APF France Handicap)",
+            "desc": "APF France Handicap milite pour l’inclusion des personnes en situation de handicap et défend leurs droits.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/APF.jpg",
+            "tags": [
+                "handicap",
+                "inclusion",
+                "droits"
+            ],
+            "lien": "https://www.apf-francehandicap.org"
+        },
+        {
+            "name": "Union Nationale des Associations de Familles de Traumatisés Crâniens (UNAFTC)",
+            "desc": "L'UNAFTC accompagne les familles et les patients victimes de traumatismes crâniens et de lésions cérébrales acquises.",
+            "logo": "https://unaftc.france-assos-sante.org/wp-content/uploads/sites/36/2019/01/logo-unaftc.jpeg",
+            "tags": [
+                "traumatisme crânien",
+                "soutien",
+                "familles"
+            ],
+            "lien": "https://unaftc.france-assos-sante.org"
+        },
+        {
+            "name": "Fédération Nationale des Aphasiques de France (FNAF)",
+            "desc": "La FNAF accompagne les personnes aphasiques et leurs proches en favorisant leur intégration sociale et en sensibilisant le public.",
+            "logo": "https://aphasie.fr/wp-content/uploads/2023/05/picto-APHASIE-FNAF.png",
+            "tags": [
+                "aphasie",
+                "inclusion",
+                "soutien"
+            ],
+            "lien": "https://aphasie.fr"
+        },
+        {
+            "name": "Association pour le Droit de Mourir dans la Dignité (ADMD)",
+            "desc": "L'ADMD milite pour le droit des patients à choisir les conditions de leur fin de vie, en promouvant la légalisation de l'euthanasie et du suicide assisté.",
+            "logo": "https://admd.france-assos-sante.org/wp-content/uploads/sites/22/2019/01/Meeting18_V2.png",
+            "tags": [
+                "fin de vie",
+                "euthanasie",
+                "suicide assisté"
+            ],
+            "lien": "https://www.admd.net"
+        },
+        {
+            "name": "Association François Aupetit (AFA)",
+            "desc": "L'AFA soutient les personnes atteintes de maladies inflammatoires chroniques de l'intestin, telles que la maladie de Crohn et la rectocolite hémorragique, en offrant information, soutien et promotion de la recherche.",
+            "logo": "https://afa.france-assos-sante.org/wp-content/uploads/sites/24/2019/01/association-francois-aupetit-afa-crohn-rch-e62bfffc634e4b9dba9fabf1e4495460.jpg",
+            "tags": [
+                "maladie de Crohn",
+                "rectocolite hémorragique",
+                "recherche médicale"
+            ],
+            "lien": "https://www.afa.asso.fr"
+        },
+        {
+            "name": "Association Française des Sclérosés en Plaques (AFSEP)",
+            "desc": "L'AFSEP apporte soutien et information aux personnes atteintes de sclérose en plaques, et œuvre pour améliorer leur qualité de vie.",
+            "logo": "https://afsep.france-assos-sante.org/wp-content/uploads/sites/48/2019/01/Afsep-logo-200x75.jpg",
+            "tags": [
+                "sclérose en plaques",
+                "soutien",
+                "qualité de vie"
+            ],
+            "lien": "https://afsep.fr"
+        },
+        {
+            "name": "Association Française du Syndrome d'Angelman (AFSA)",
+            "desc": "L'AFSA soutient les familles et les personnes concernées par le syndrome d'Angelman, en favorisant la recherche et la diffusion d'informations sur cette maladie rare.",
+            "logo": "https://afsa.france-assos-sante.org/wp-content/uploads/sites/30/2019/01/afsa-logo-2018-300x211.png",
+            "tags": [
+                "syndrome d'Angelman",
+                "maladie rare",
+                "recherche"
+            ],
+            "lien": "https://www.angelman-afsa.org"
+        },
+        {
+            "name": "La Ligue contre le Cancer",
+            "desc": "La Ligue contre le Cancer lutte contre le cancer en finançant la recherche, en informant le public et en soutenant les patients et leurs proches.",
+            "logo": "https://www.france-assos-sante.org/wp-content/uploads/2017/07/Ligue-contre-le-Cancer.jpg",
+            "tags": [
+                "cancer",
+                "recherche",
+                "soutien"
+            ],
+            "lien": "https://www.ligue-cancer.net"
+        },
+        {
+            "name": "SOS Hépatites Fédération",
+            "desc": "SOS Hépatites Fédération soutient les personnes atteintes d'hépatites virales et milite pour une meilleure prise en charge médicale.",
+            "logo": "https://ligue-contre-le-cancer.france-assos-sante.org/wp-content/uploads/sites/58/2019/01/logo-LCC-200x200.jpg",
+            "tags": [
+                "hépatites",
+                "soutien",
+                "sensibilisation"
+            ],
+            "lien": "https://soshepatites.org"
+        }
+    ]
+}
