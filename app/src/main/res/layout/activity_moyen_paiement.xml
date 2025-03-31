@@ -60,6 +60,7 @@
             android:textColor="@android:color/white" />
 
         <EditText
+            android:id="@+id/editTextCardNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="0123 4567 8910 1112"
@@ -80,6 +81,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/editTextExpiry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="MM/YY"
@@ -106,6 +108,7 @@
                     android:paddingBottom="15dp"/>
 
                 <EditText
+                    android:id="@+id/editTextCVC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CVC"

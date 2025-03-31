@@ -65,6 +65,9 @@ public class ConnexionActivity extends AppCompatActivity {
 
         accessDatabase();
         setupListeners();
+
+        Button retourButton = findViewById(R.id.btn_retour);
+        retourButton.setOnClickListener(v -> finish());
     }
 
     private void setupListeners() {

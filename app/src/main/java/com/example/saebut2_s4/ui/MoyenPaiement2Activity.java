@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.saebut2_s4.R;
 
-public class MoyenPaiementActivity extends AppCompatActivity {
+public class MoyenPaiement2Activity extends AppCompatActivity {
     private EditText editTextCardNumber, editTextExpiry, editTextCVC;
     private Button buttonNext, buttonBack;
 
@@ -146,7 +146,7 @@ public class MoyenPaiementActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(v -> {
             if (validatePaymentForm()) {
                 // Rediriger vers la page de finalisation
-                Intent intent = new Intent(MoyenPaiementActivity.this, DonFinaliseActivity.class);
+                Intent intent = new Intent(MoyenPaiement2Activity.this, DonFinaliseActivity.class);
                 startActivity(intent);
             }
         });

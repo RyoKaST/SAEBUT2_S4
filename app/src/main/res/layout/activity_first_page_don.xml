@@ -48,66 +48,64 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:paddingBottom="20dp" />
-
+        <RadioGroup
+            android:id="@+id/radio_group_don"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <RadioButton
                 android:id="@+id/don_unique"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/input_background"
                 android:text="@string/don_unique"
                 android:layout_marginBottom="20dp"/>
 
-            <!-- FrameLayout to toggle between RadioButton and Login Button -->
-            <FrameLayout
-                android:id="@+id/don_recurrent_container"
+            <RadioButton
+                android:id="@+id/don_recurrent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40sp">
-            
-                <!-- RadioButton for recurring donations -->
-                <RadioButton
-                    android:id="@+id/don_recurrent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/don_rec"
-                    android:background="@drawable/input_background" />
+                android:layout_marginBottom="20dp"
+                android:text="@string/don_rec"
+                android:background="@drawable/input_background"/>
+        </RadioGroup>
 
-                <!-- Button for login -->
-                <Button
-                    android:id="@+id/login_for_recurrent_donation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Connectez-vous pour un don régulier"
-                    android:backgroundTint="@color/Vert3_palette"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
-            </FrameLayout>
+        <!-- Button for login -->
+        <Button
+            android:id="@+id/login_for_recurrent_donation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Connectez-vous pour un don régulier"
+            android:backgroundTint="@color/Vert3_palette"
+            android:textColor="@color/white"
+            android:visibility="gone" />
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/montant"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:paddingTop="10sp"
+                android:layout_gravity="center"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/montant_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="25dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/montant"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:paddingTop="10sp"
-                    android:layout_gravity="center"
-                    android:paddingEnd="20dp"
-                    tools:ignore="RtlSymmetry" />
+                android:layout_height="50sp"
+                android:hint="@string/montant_input"
+                android:inputType="number"
+                android:background="@drawable/input_background"/>
 
-                <EditText
-                    android:id="@+id/montant_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:hint="@string/montant_input"
-                    android:background="@drawable/input_background"/>
-
-            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -118,6 +116,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
+
 
         <Button
             android:id="@+id/buttonBack"

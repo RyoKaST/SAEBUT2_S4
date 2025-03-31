@@ -48,6 +48,9 @@ public class InscriptionActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button retourButton = findViewById(R.id.btn_retour);
+        retourButton.setOnClickListener(v -> finish());
     }
 
     private void initViews() {
