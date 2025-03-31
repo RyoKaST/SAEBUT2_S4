@@ -2,6 +2,7 @@ package com.example.saebut2_s4.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class TagAssociationsActivity extends AppCompatActivity {
 
         TextView tagTitle = findViewById(R.id.tag_title);
         ListView associationsListView = findViewById(R.id.associations_list);
+        Button retourButton = findViewById(R.id.btn_retour); // Add "Retour" button
 
         // Get the clicked tag from the intent
         String tag = getIntent().getStringExtra("tag");
@@ -52,5 +54,8 @@ public class TagAssociationsActivity extends AppCompatActivity {
             intent.putExtra("association_logo", selectedAssociation.getLogoUrl());
             startActivity(intent);
         });
+
+        // Set click listener for the "Retour" button
+        retourButton.setOnClickListener(v -> finish());
     }
 }
