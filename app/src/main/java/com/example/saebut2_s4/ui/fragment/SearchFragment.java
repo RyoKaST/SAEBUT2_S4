@@ -50,7 +50,8 @@ public class SearchFragment extends Fragment {
                 association.getNomAssociation(),
                 truncatedDescription,
                 association.getLogoUrl(),
-                association.getLien() // Include the website link
+                association.getLien(), // Include the website link
+                new ArrayList<>() // Empty list for tags
             ));
         }
 
@@ -101,7 +102,8 @@ public class SearchFragment extends Fragment {
                     association.getNomAssociation(),
                     truncatedDescription,
                     association.getLogoUrl(),
-                    association.getLien() // Include the website link
+                    association.getLien(), // Include the website link
+                    new ArrayList<>() // Empty list for tags
                 ));
             }
         }

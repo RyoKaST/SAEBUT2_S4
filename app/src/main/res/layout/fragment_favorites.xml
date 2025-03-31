@@ -1,13 +1,41 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:background="@color/Vert3_palette">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tags"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <GridLayout
+        android:id="@+id/grid_layout_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:id="@+id/associations_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/example_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorites Fragment"
-        android:textSize="24sp"
-        android:layout_gravity="center"/>
-
-</FrameLayout>
+        android:background="@drawable/ripple_effect"
+        android:text="Example Button"
+        android:textColor="@color/white" />
+</LinearLayout>
