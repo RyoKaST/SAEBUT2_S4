@@ -25,7 +25,6 @@ public class AssociationDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_association_details);
 
-        // Handle the deep link
         Intent intent = getIntent();
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri data = intent.getData();
@@ -38,24 +37,17 @@ public class AssociationDetailsActivity extends AppCompatActivity {
                             long associationId = Long.parseLong(idString);
                             Log.d(TAG, "Deep link received, association ID: " + associationId);
 
-                            // Fetch and display the association details
+                            // Récupérer et afficher les détails de l'association
                             displayAssociationDetails(associationId);
-                        } else {
-                            throw new IllegalArgumentException("ID segment is null");
+                            return;
                         }
-                    } else {
-                        throw new IllegalArgumentException("Invalid path in deep link");
                     }
                 } catch (Exception e) {
                     Log.e(TAG, "Error processing deep link", e);
-                    Toast.makeText(this, "Invalid deep link", Toast.LENGTH_SHORT).show();
-                    finish();
                 }
-            } else {
-                Log.e(TAG, "Invalid deep link scheme or host");
-                Toast.makeText(this, "Invalid deep link", Toast.LENGTH_SHORT).show();
-                finish();
             }
+            Toast.makeText(this, "Invalid deep link", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         // Retrieve the selected association ID from the intent
@@ -147,26 +139,33 @@ public class AssociationDetailsActivity extends AppCompatActivity {
 
     // Method to fetch and display association details
     private void displayAssociationDetails(long associationId) {
-        AppDatabase appDatabase = AppDatabase.getInstance(this);
-        Association association = appDatabase.associationDao().getAssociationById(associationId);
+        new Thread(() -> {
+            AppDatabase appDatabase = AppDatabase.getInstance(this);
+            Association association = appDatabase.associationDao().getAssociationById(associationId);
 
-        if (association != null) {
-            TextView nameTextView = findViewById(R.id.association_name);
-            TextView descriptionTextView = findViewById(R.id.association_description);
-            ImageView logoImageView = findViewById(R.id.association_logo);
+            if (association != null) {
+                runOnUiThread(() -> {
+                    // Mettre à jour l'interface utilisateur avec les données de l'association
+                    TextView nameTextView = findViewById(R.id.association_name);
+                    TextView descriptionTextView = findViewById(R.id.association_description);
+                    ImageView logoImageView = findViewById(R.id.association_logo);
 
-            nameTextView.setText(association.getNomAssociation());
-            descriptionTextView.setText(association.getDescriptionAssociation());
+                    nameTextView.setText(association.getNomAssociation());
+                    descriptionTextView.setText(association.getDescriptionAssociation());
 
-            Glide.with(this)
-                .load(association.getLogoUrl())
-                .placeholder(R.drawable.placeholder_logo)
-                .error(R.drawable.error_logo)
-                .into(logoImageView);
-        } else {
-            Log.e("AssociationDetails", "Association not found for ID: " + associationId);
-            Toast.makeText(this, "Association not found", Toast.LENGTH_SHORT).show();
-            finish();
-        }
+                    Glide.with(this)
+                        .load(association.getLogoUrl())
+                        .placeholder(R.drawable.placeholder_logo)
+                        .error(R.drawable.error_logo)
+                        .into(logoImageView);
+                });
+            } else {
+                runOnUiThread(() -> {
+                    Log.e("AssociationDetails", "Association not found for ID: " + associationId);
+                    Toast.makeText(this, "Association not found", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            }
+        }).start();
     }
 }
