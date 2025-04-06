@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.saebut2_s4.R;
+import com.example.saebut2_s4.data.db.AppDatabase; // Add this import
+import com.example.saebut2_s4.data.model.Association; // Add this import
 
 public class AssociationDetailsActivity extends AppCompatActivity {
 
@@ -21,6 +24,44 @@ public class AssociationDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_association_details);
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if (data != null && "monapp".equals(data.getScheme()) && "deeplink".equals(data.getHost())) {
+                try {
+                    String path = data.getPath();
+                    if (path != null && path.startsWith("/association/")) {
+                        String idString = data.getLastPathSegment();
+                        if (idString != null) {
+                            long associationId = Long.parseLong(idString);
+                            Log.d(TAG, "Deep link received, association ID: " + associationId);
+
+                            // Récupérer et afficher les détails de l'association
+                            displayAssociationDetails(associationId);
+                            return;
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error processing deep link", e);
+                }
+            }
+            Toast.makeText(this, "Invalid deep link", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        // Retrieve the selected association ID from the intent
+        long associationId = getIntent().getLongExtra("association_id", -1);
+
+        // Log and store the association ID in SharedPreferences
+        if (associationId != -1) {
+            getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                .putLong("selected_association_id", associationId)
+                .apply();
+            Log.d("AssociationDetails", "Selected association ID stored: " + associationId);
+        } else {
+            Log.e("AssociationDetails", "Invalid association ID received");
+        }
 
         ImageView logoImageView = findViewById(R.id.association_logo);
         TextView nameTextView = findViewById(R.id.association_name);
@@ -68,17 +109,63 @@ public class AssociationDetailsActivity extends AppCompatActivity {
 
         // Set click listener for the "Donner" button
         donnerButton.setOnClickListener(v -> {
-            Log.d(TAG, "Donner button clicked"); // Log the click event
-            Intent intent = new Intent(AssociationDetailsActivity.this, FirstPageDonActivity.class);
-            startActivity(intent);
+            Log.d(TAG, "Donner button clicked");
+
+            // Save the association ID in SharedPreferences
+            if (associationId != -1) {
+                getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
+                    .putLong("selected_association_id", associationId)
+                    .apply();
+                Log.d(TAG, "Selected association ID stored: " + associationId);
+            } else {
+                Log.e(TAG, "Invalid association ID, cannot proceed to donation");
+                Toast.makeText(this, "Association invalide.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Navigate to the donation page
+            Intent donationIntent = new Intent(AssociationDetailsActivity.this, FirstPageDonActivity.class); // Renamed variable
+            startActivity(donationIntent);
         });
 
          // Set click listener for the "buttonBack" button
         buttonBack.setOnClickListener(v -> {
             Log.d(TAG, "Back button clicked");
-            Intent intent = new Intent(AssociationDetailsActivity.this, AccueilActivity.class);
-            startActivity(intent);
+            Intent backIntent = new Intent(AssociationDetailsActivity.this, AccueilActivity.class); // Renamed variable
+            startActivity(backIntent);
         });
 
+    }
+
+    // Method to fetch and display association details
+    private void displayAssociationDetails(long associationId) {
+        new Thread(() -> {
+            AppDatabase appDatabase = AppDatabase.getInstance(this);
+            Association association = appDatabase.associationDao().getAssociationById(associationId);
+
+            if (association != null) {
+                runOnUiThread(() -> {
+                    // Mettre à jour l'interface utilisateur avec les données de l'association
+                    TextView nameTextView = findViewById(R.id.association_name);
+                    TextView descriptionTextView = findViewById(R.id.association_description);
+                    ImageView logoImageView = findViewById(R.id.association_logo);
+
+                    nameTextView.setText(association.getNomAssociation());
+                    descriptionTextView.setText(association.getDescriptionAssociation());
+
+                    Glide.with(this)
+                        .load(association.getLogoUrl())
+                        .placeholder(R.drawable.placeholder_logo)
+                        .error(R.drawable.error_logo)
+                        .into(logoImageView);
+                });
+            } else {
+                runOnUiThread(() -> {
+                    Log.e("AssociationDetails", "Association not found for ID: " + associationId);
+                    Toast.makeText(this, "Association not found", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            }
+        }).start();
     }
 }

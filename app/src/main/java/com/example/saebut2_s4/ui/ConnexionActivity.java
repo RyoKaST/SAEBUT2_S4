@@ -96,6 +96,7 @@ public class ConnexionActivity extends AppCompatActivity {
                     // Save user info in SharedPreferences
                     getSharedPreferences("user_prefs", MODE_PRIVATE).edit()
                         .putBoolean("is_logged_in", true)
+                        .putLong("user_id", utilisateur.getIdUtilisateur()) // Store the user ID
                         .putString("user_name", utilisateur.getNomUtilisateur() + " " + utilisateur.getPrenomUtilisateur())
                         .putString("user_email", utilisateur.getEmailUtilisateur())
                         .apply();

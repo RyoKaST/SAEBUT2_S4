@@ -3,6 +3,8 @@ package com.example.saebut2_s4;
 import android.app.Application;
 import android.util.Log;
 
+import com.example.saebut2_s4.data.db.AppDatabase; // Add this import
+import com.example.saebut2_s4.data.dao.AssociationDao; // Add this import
 import com.example.saebut2_s4.data.model.Association;
 
 import org.json.JSONArray;
@@ -37,41 +39,50 @@ public class MyApp extends Application {
     }
 
     private void loadAssociationsFromJson() {
-        try {
-            // Load the JSON file from assets
-            InputStream inputStream = getAssets().open("asso.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
+        new Thread(() -> {
+            try {
+                // Load the JSON file from assets
+                InputStream inputStream = getAssets().open("asso.json");
+                int size = inputStream.available();
+                byte[] buffer = new byte[size];
+                inputStream.read(buffer);
+                inputStream.close();
 
-            // Convert the JSON file content to a string
-            String json = new String(buffer, StandardCharsets.UTF_8);
+                // Convert the JSON file content to a string
+                String json = new String(buffer, StandardCharsets.UTF_8);
 
-            // Parse the JSON
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray jsonArray = jsonObject.getJSONArray("associations");
+                // Parse the JSON
+                JSONObject jsonObject = new JSONObject(json);
+                JSONArray jsonArray = jsonObject.getJSONArray("associations");
 
-            // Populate the associations list
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject associationJson = jsonArray.getJSONObject(i);
-                String name = associationJson.getString("name");
-                String desc = associationJson.getString("desc");
-                String logo = associationJson.getString("logo");
-                String lien = associationJson.optString("lien", ""); // Get the website link
+                // Populate the associations list
+                AppDatabase appDatabase = AppDatabase.getInstance(this);
+                AssociationDao associationDao = appDatabase.associationDao();
 
-                // Extract tags
-                JSONArray tagsArray = associationJson.getJSONArray("tags");
-                List<String> tags = new ArrayList<>();
-                for (int j = 0; j < tagsArray.length(); j++) {
-                    tags.add(tagsArray.getString(j));
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject associationJson = jsonArray.getJSONObject(i);
+                    String name = associationJson.getString("name");
+                    String desc = associationJson.getString("desc");
+                    String logo = associationJson.getString("logo");
+                    String lien = associationJson.optString("lien", ""); // Get the website link
+
+                    // Extract tags
+                    JSONArray tagsArray = associationJson.getJSONArray("tags");
+                    List<String> tags = new ArrayList<>();
+                    for (int j = 0; j < tagsArray.length(); j++) {
+                        tags.add(tagsArray.getString(j));
+                    }
+
+                    // Create Association object without manually setting the ID
+                    Association association = new Association(name, desc, logo, lien, tags);
+                    associations.add(association);
+
+                    // Insert the association into the database
+                    associationDao.inserer(association);
                 }
-
-                // Create Association object with tags
-                associations.add(new Association(name, desc, logo, lien, tags));
+            } catch (Exception e) {
+                Log.e("MyApp", "Error loading associations from JSON", e);
             }
-        } catch (Exception e) {
-            Log.e("MyApp", "Error loading associations from JSON", e);
-        }
+        }).start();
     }
 }

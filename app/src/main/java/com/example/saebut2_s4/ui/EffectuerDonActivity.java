@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.saebut2_s4.R;
+import com.example.saebut2_s4.data.db.AppDatabase; // Import AppDatabase
+import com.example.saebut2_s4.data.dao.DonDao;
+import com.example.saebut2_s4.data.model.Don;
 
 public class EffectuerDonActivity extends AppCompatActivity {
     private EditText editTextLastName, editTextFirstName, editTextEmail;
@@ -67,7 +70,10 @@ public class EffectuerDonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateForm()) {
-                    // Skip RecapDonActivity and navigate directly to MoyenPaiementActivity
+                    // Save the donation in the database
+                    saveDonation();
+
+                    // Navigate to the next activity
                     Intent intent = new Intent(EffectuerDonActivity.this, MoyenPaiementActivity.class);
                     intent.putExtra("montant", montant);
                     intent.putExtra("nom", editTextLastName.getText().toString().trim());
@@ -77,6 +83,33 @@ public class EffectuerDonActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void saveDonation() {
+        new Thread(() -> {
+            AppDatabase appDatabase = AppDatabase.getInstance(this);
+            DonDao donDao = appDatabase.donDao();
+
+            // Retrieve the logged-in user ID and selected association ID
+            long userId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("user_id", -1);
+            long associationId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("selected_association_id", -1);
+
+            if (userId != -1 && associationId != -1) {
+                try {
+                    Don don = new Don(
+                        Double.parseDouble(montant), // Donation amount
+                        String.valueOf(System.currentTimeMillis()), // Current timestamp as the donation date
+                        userId,
+                        associationId
+                    );
+                    donDao.inserer(don); // Save the donation in the database
+                } catch (Exception e) {
+                    runOnUiThread(() -> Toast.makeText(this, "Erreur lors de l'enregistrement du don.", Toast.LENGTH_SHORT).show());
+                }
+            } else {
+                runOnUiThread(() -> Toast.makeText(this, "Utilisateur ou association invalide.", Toast.LENGTH_SHORT).show());
+            }
+        }).start();
     }
 
     /**

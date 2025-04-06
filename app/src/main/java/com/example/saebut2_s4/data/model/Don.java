@@ -1,27 +1,14 @@
 package com.example.saebut2_s4.data.model;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
-import static androidx.room.ForeignKey.CASCADE;
-
-@Entity(tableName = "dons",
-        foreignKeys = {
-                @ForeignKey(entity = Utilisateur.class,
-                        parentColumns = "id_utilisateur",
-                        childColumns = "id_utilisateur",
-                        onDelete = CASCADE),
-                @ForeignKey(entity = Association.class,
-                        parentColumns = "id_association",
-                        childColumns = "id_association",
-                        onDelete = CASCADE)
-        })
+@Entity(tableName = "dons")
 public class Don {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id_don")
+    @ColumnInfo(name = "id_don")
     private long idDon;
 
     @ColumnInfo(name = "montant_don")
@@ -36,6 +23,9 @@ public class Don {
     @ColumnInfo(name = "id_association")
     private long associationIdDon;
 
+    private boolean isRecurrent;
+    private String nextPaymentDate; // Store as a timestamp string
+
     // Constructeur public sans argument pour Room
     public Don() {
     }
@@ -46,6 +36,16 @@ public class Don {
         this.dateDon = dateDon;
         this.utilisateurIdDon = utilisateurIdDon;
         this.associationIdDon = associationIdDon;
+    }
+
+    // Add a new constructor with all parameters
+    public Don(double montantDon, String dateDon, long utilisateurIdDon, long associationIdDon, boolean isRecurrent, String nextPaymentDate) {
+        this.montantDon = montantDon;
+        this.dateDon = dateDon;
+        this.utilisateurIdDon = utilisateurIdDon;
+        this.associationIdDon = associationIdDon;
+        this.isRecurrent = isRecurrent;
+        this.nextPaymentDate = nextPaymentDate;
     }
 
     // Getters et Setters
@@ -88,5 +88,21 @@ public class Don {
 
     public void setAssociationIdDon(long associationIdDon) {
         this.associationIdDon = associationIdDon;
+    }
+
+    public boolean isRecurrent() {
+        return isRecurrent;
+    }
+
+    public void setRecurrent(boolean recurrent) {
+        isRecurrent = recurrent;
+    }
+
+    public String getNextPaymentDate() {
+        return nextPaymentDate;
+    }
+
+    public void setNextPaymentDate(String nextPaymentDate) {
+        this.nextPaymentDate = nextPaymentDate;
     }
 }

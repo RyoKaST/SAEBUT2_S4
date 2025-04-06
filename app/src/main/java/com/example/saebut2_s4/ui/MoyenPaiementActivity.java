@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.saebut2_s4.R;
+import com.example.saebut2_s4.data.db.AppDatabase; // Corrected import path
+import com.example.saebut2_s4.data.dao.DonDao;
+import com.example.saebut2_s4.data.model.Don; // Import the Don class
+import com.example.saebut2_s4.data.model.Association; // Add this import
+import java.util.List; // Ensure this import is present
+import java.util.Calendar;
 
 public class MoyenPaiementActivity extends AppCompatActivity {
     private EditText editTextCardNumber, editTextExpiry, editTextCVC;
@@ -145,13 +153,90 @@ public class MoyenPaiementActivity extends AppCompatActivity {
         // Configurer le bouton de validation
         buttonNext.setOnClickListener(v -> {
             if (validatePaymentForm()) {
-                // Rediriger vers la page de finalisation
-                Intent intent = new Intent(MoyenPaiementActivity.this, DonFinaliseActivity.class);
+                // Save the donation in the database
+                saveDonation();
+
+                // Navigate back to AccueilActivity
+                Intent intent = new Intent(MoyenPaiementActivity.this, AccueilActivity.class);
+                intent.putExtra("navigate_to", "home_fragment"); // Optional: Pass data to indicate navigation to HomeFragment
                 startActivity(intent);
+                finish();
             }
         });
     }
 
+    private void saveDonation() {
+        new Thread(() -> {
+            AppDatabase appDatabase = AppDatabase.getInstance(this);
+            DonDao donDao = appDatabase.donDao();
+
+            // Retrieve the logged-in user ID and selected association ID
+            long userId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("user_id", -1);
+            long associationId = getSharedPreferences("user_prefs", MODE_PRIVATE).getLong("selected_association_id", -1);
+
+            if (associationId == -1) {
+                Log.e("MoyenPaiementActivity", "No association selected");
+                runOnUiThread(() -> Toast.makeText(this, "Veuillez sélectionner une association.", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            String montant = getIntent().getStringExtra("montant");
+            boolean isRecurrent = getIntent().getBooleanExtra("is_recurrent", false); // Get the recurring status
+
+            // Log the retrieved association ID
+            Log.d("MoyenPaiementActivity", "Retrieved association ID: " + associationId);
+
+            // Log a detailed recap before saving the donation
+            Log.d("MoyenPaiementActivity", "Recap before saving donation:");
+            Log.d("MoyenPaiementActivity", "User ID: " + userId);
+            Log.d("MoyenPaiementActivity", "Association ID: " + associationId);
+            Log.d("MoyenPaiementActivity", "Montant: " + montant);
+
+            // Verify foreign key relationships
+            boolean isUserValid = appDatabase.utilisateurDao().getUtilisateurById(userId) != null;
+            boolean isAssociationValid = appDatabase.associationDao().getAssociationById(associationId) != null;
+
+            Log.d("MoyenPaiementActivity", "Is User Valid: " + isUserValid);
+            Log.d("MoyenPaiementActivity", "Is Association Valid: " + isAssociationValid);
+
+            if (!isUserValid || !isAssociationValid) {
+                Log.e("MoyenPaiementActivity", "Foreign key constraint failed: Invalid user or association ID");
+                runOnUiThread(() -> Toast.makeText(this, "Utilisateur ou association invalide.", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            if (userId != -1 && associationId != -1 && montant != null) {
+                try {
+                    String currentDate = String.valueOf(System.currentTimeMillis());
+                    String nextPaymentDate = null;
+
+                    if (isRecurrent) {
+                        // Calculate the next payment date (30 days later)
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.add(Calendar.DAY_OF_MONTH, 30);
+                        nextPaymentDate = String.valueOf(calendar.getTimeInMillis());
+                    }
+
+                    Don don = new Don(
+                        Double.parseDouble(montant), // Donation amount
+                        currentDate, // Current timestamp as the donation date
+                        userId,
+                        associationId,
+                        isRecurrent, // Save the recurring status
+                        nextPaymentDate // Save the next payment date
+                    );
+                    donDao.inserer(don); // Save the donation in the database
+                    Log.d("MoyenPaiementActivity", "Donation saved successfully");
+                } catch (Exception e) {
+                    Log.e("MoyenPaiementActivity", "Error saving donation", e);
+                    runOnUiThread(() -> Toast.makeText(this, "Erreur lors de l'enregistrement du don.", Toast.LENGTH_SHORT).show());
+                }
+            } else {
+                Log.e("MoyenPaiementActivity", "Invalid data: userId=" + userId + ", associationId=" + associationId + ", montant=" + montant);
+                runOnUiThread(() -> Toast.makeText(this, "Données utilisateur ou association manquantes.", Toast.LENGTH_SHORT).show());
+            }
+        }).start();
+    }
 
     private boolean validatePaymentForm() {
         boolean isValid = true;

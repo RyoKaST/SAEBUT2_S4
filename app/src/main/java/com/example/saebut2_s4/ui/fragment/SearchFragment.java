@@ -9,14 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.saebut2_s4.MyApp;
 import com.example.saebut2_s4.R;
 import com.example.saebut2_s4.data.model.Association;
 import com.example.saebut2_s4.ui.AssociationAdapter;
 import com.example.saebut2_s4.ui.AssociationDetailsActivity;
+import com.example.saebut2_s4.ui.AccueilActivity; // Add this import
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,12 +64,13 @@ public class SearchFragment extends Fragment {
 
         // Add item click listener
         listView.setOnItemClickListener((parent, view1, position, id) -> {
-            // Use the original description and link from the associations list
+            // Use the actual association ID
             Association selectedAssociation = associations.get(position);
             Intent intent = new Intent(requireContext(), AssociationDetailsActivity.class);
+            intent.putExtra("association_id", selectedAssociation.getIdAssociation()); // Pass the association ID as a long
             intent.putExtra("association_name", selectedAssociation.getNomAssociation());
             intent.putExtra("association_description", selectedAssociation.getDescriptionAssociation());
-            intent.putExtra("association_siteweb", selectedAssociation.getLien()); // Pass the website link
+            intent.putExtra("association_siteweb", selectedAssociation.getLien());
             intent.putExtra("association_logo", selectedAssociation.getLogoUrl());
             startActivity(intent);
         });
@@ -108,5 +113,10 @@ public class SearchFragment extends Fragment {
             }
         }
         adapter.notifyDataSetChanged();
+    }
+
+    private void onAssociationSelected(long associationId, String name, String description, String siteweb, String logoUrl) {
+        // Navigate to AssociationDetailsActivity with the selected association details
+        ((AccueilActivity) requireActivity()).navigateToAssociationDetails(associationId, name, description, siteweb, logoUrl);
     }
 }

@@ -46,4 +46,6 @@
     <string name="tags">Tags</string>
     <string name="connectez_vous_pour_un_don_r_gulier">Connectez-vous pour un don régulier</string>
     <string name="chercher_une_association">Chercher une association...</string>
+    <string name="chercher_un_tag">Chercher un tag...</string>
+    <string name="information_compte">Information compte</string>
 </resources>

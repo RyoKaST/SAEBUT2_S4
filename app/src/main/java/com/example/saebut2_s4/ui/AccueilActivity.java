@@ -64,12 +64,11 @@ public class AccueilActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottom_navigation);
         fragmentManager = getSupportFragmentManager();
 
-        // Initialize fragments
+        // Load the HomeFragment by default
         if (savedInstanceState == null) {
-            initializeFragments();
-        } else {
-            // Restore active fragment after configuration change
-            activeFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, new HomeFragment(), "home");
+            transaction.commit();
         }
 
         setupNavigation();
@@ -78,16 +77,7 @@ public class AccueilActivity extends AppCompatActivity {
     private void initializeFragments() {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        transaction.add(R.id.fragment_container, new ProfileFragment(), "profile")
-                .hide(new ProfileFragment());
-
-        transaction.add(R.id.fragment_container, new FavoritesFragment(), "favorites")
-                .hide(new FavoritesFragment());
-
-        transaction.add(R.id.fragment_container, new SearchFragment(), "search")
-                .hide(new SearchFragment());
-
-        // Set HomeFragment as default
+        // Set HomeFragment as the default and only add it initially
         activeFragment = new HomeFragment();
         transaction.add(R.id.fragment_container, activeFragment, "home");
 
@@ -129,9 +119,11 @@ public class AccueilActivity extends AppCompatActivity {
         );
 
         // Hide current active fragment
-        transaction.hide(activeFragment);
+        if (activeFragment != null) {
+            transaction.hide(activeFragment);
+        }
 
-        // Find existing fragment or create new one
+        // Find existing fragment or create a new one lazily
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
         if (fragment == null) {
             try {
@@ -147,8 +139,16 @@ public class AccueilActivity extends AppCompatActivity {
         transaction.show(fragment);
         activeFragment = fragment;
 
-        // Optional: Add to back stack
-        transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void navigateToAssociationDetails(long associationId, String name, String description, String siteweb, String logoUrl) {
+        Intent intent = new Intent(this, AssociationDetailsActivity.class);
+        intent.putExtra("association_id", associationId); // Pass the association ID
+        intent.putExtra("association_name", name); // Pass the association name
+        intent.putExtra("association_description", description); // Pass the association description
+        intent.putExtra("association_siteweb", siteweb); // Pass the association website
+        intent.putExtra("association_logo", logoUrl); // Pass the association logo URL
+        startActivity(intent);
     }
 }
